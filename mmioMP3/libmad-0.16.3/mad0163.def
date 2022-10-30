@@ -1,0 +1,52 @@
+LIBRARY mad0163 INITINSTANCE TERMINSTANCE
+DESCRIPTION "@#cmake build system:0.16.3#@##1## 30 Oct 2022 15:24:30     SMEDLES::::0::@@mad"
+DATA MULTIPLE NONSHARED
+EXPORTS
+  ; segment TEXT32
+  "_mad_bit_init"                                                       ; magicseg='TEXT32' len=13
+  "_mad_bit_length"                                                     ; magicseg='TEXT32' len=15
+  "_mad_bit_nextbyte"                                                   ; magicseg='TEXT32' len=17
+  "_mad_bit_skip"                                                       ; magicseg='TEXT32' len=13
+  "_mad_bit_read"                                                       ; magicseg='TEXT32' len=13
+  "_mad_bit_crc"                                                        ; magicseg='TEXT32' len=12
+  "_mad_decoder_init"                                                   ; magicseg='TEXT32' len=17
+  "_mad_decoder_finish"                                                 ; magicseg='TEXT32' len=19
+  "_mad_decoder_run"                                                    ; magicseg='TEXT32' len=16
+  "_mad_decoder_message"                                                ; magicseg='TEXT32' len=20
+  "_mad_f_abs"                                                          ; magicseg='TEXT32' len=10
+  "_mad_f_div"                                                          ; magicseg='TEXT32' len=10
+  "_mad_header_init"                                                    ; magicseg='TEXT32' len=16
+  "_mad_frame_init"                                                     ; magicseg='TEXT32' len=15
+  "_mad_frame_mute"                                                     ; magicseg='TEXT32' len=15
+  "_mad_frame_finish"                                                   ; magicseg='TEXT32' len=17
+  "_mad_header_decode"                                                  ; magicseg='TEXT32' len=18
+  "_mad_frame_decode"                                                   ; magicseg='TEXT32' len=17
+  "_mad_huff_quad_table"                                                ; magicseg='TEXT32' len=20
+  "_mad_huff_pair_table"                                                ; magicseg='TEXT32' len=20
+  "_mad_layer_I"                                                        ; magicseg='TEXT32' len=12
+  "_mad_layer_II"                                                       ; magicseg='TEXT32' len=13
+  "_mad_layer_III"                                                      ; magicseg='TEXT32' len=14
+  "_mad_stream_init"                                                    ; magicseg='TEXT32' len=16
+  "_mad_stream_finish"                                                  ; magicseg='TEXT32' len=18
+  "_mad_stream_buffer"                                                  ; magicseg='TEXT32' len=18
+  "_mad_stream_skip"                                                    ; magicseg='TEXT32' len=16
+  "_mad_stream_sync"                                                    ; magicseg='TEXT32' len=16
+  "_mad_stream_errorstr"                                                ; magicseg='TEXT32' len=20
+  "_mad_synth_init"                                                     ; magicseg='TEXT32' len=15
+  "_mad_synth_mute"                                                     ; magicseg='TEXT32' len=15
+  "_mad_synth_frame"                                                    ; magicseg='TEXT32' len=16
+  "_mad_timer_zero"                                                     ; magicseg='TEXT32' len=15
+  "_mad_timer_compare"                                                  ; magicseg='TEXT32' len=18
+  "_mad_timer_negate"                                                   ; magicseg='TEXT32' len=17
+  "_mad_timer_abs"                                                      ; magicseg='TEXT32' len=14
+  "_mad_timer_set"                                                      ; magicseg='TEXT32' len=14
+  "_mad_timer_add"                                                      ; magicseg='TEXT32' len=14
+  "_mad_timer_multiply"                                                 ; magicseg='TEXT32' len=19
+  "_mad_timer_count"                                                    ; magicseg='TEXT32' len=16
+  "_mad_timer_fraction"                                                 ; magicseg='TEXT32' len=19
+  "_mad_timer_string"                                                   ; magicseg='TEXT32' len=17
+  "_mad_version"                                                        ; magicseg='TEXT32' len=12
+  "_mad_copyright"                                                      ; magicseg='TEXT32' len=14
+  "_mad_author"                                                         ; magicseg='TEXT32' len=11
+  "_mad_build"                                                          ; magicseg='TEXT32' len=10
+

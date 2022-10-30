@@ -1,0 +1,10 @@
+prefix=/usr/local
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: libmad
+Description: ID3 tag manipulation library for MP3 files
+Version: 0.16.3
+URL: https://github.com/tenacityteam/libmad
+Libs: -L${libdir} -lmad
+Cflags: -I${includedir}

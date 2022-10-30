@@ -2,8 +2,8 @@
 CC=gcc
 CFLAGS=-Zomf -O2 -DUSE_OS2_TOOLKIT_HEADERS
 #CFLAGS=-Wall -g -DDEBUG -DUSE_OS2_TOOLKIT_HEADERS
-LIBS= -lm -lmmio -Llibmad-0.15.0b/.libs -lmad
-INCLUDES= -Ilibmad-0.15.0b/
+LIBS= -lm -lmmio -Llibmad-0.16.3 -lmad
+INCLUDES= -Ilibmad-0.16.3/
 LDFLAGS= -Zomf -Zmap
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CFLAGS)
 all: mmioMP3.dll bitrate.exe
