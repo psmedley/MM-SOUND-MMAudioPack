@@ -24,7 +24,7 @@
 # endif
 
 # include "global.h"
-
+# include <string.h>
 # include <mad.h>
 
 # include "xing.h"

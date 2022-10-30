@@ -1,66 +1,45 @@
-#  libFLAC - Free Lossless Audio Codec library
+#  FLAC - Free Lossless Audio Codec
 #  Copyright (C) 2001,2002  Josh Coalson
 #
-#  This library is free software; you can redistribute it and/or
-#  modify it under the terms of the GNU Library General Public
-#  License as published by the Free Software Foundation; either
-#  version 2 of the License, or (at your option) any later version.
+#  This program is part of FLAC; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
 #
-#  This library is distributed in the hope that it will be useful,
+#  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-#  Library General Public License for more details.
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
 #
-#  You should have received a copy of the GNU Library General Public
-#  License along with this library; if not, write to the
-#  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-#  Boston, MA  02111-1307, USA.
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-lib_LTLIBRARIES = libFLAC.la
-if DEBUG
-DEBUGCFLAGS = -DFLAC__OVERFLOW_DETECT
-endif
-CFLAGS = @CFLAGS@ $(DEBUGCFLAGS)
+#
+# automake provides the following useful targets:
+#
+# all: build all programs and libraries using the current
+# configuration (set by configure)
+#
+# check: build and run all self-tests
+#
+# clean: remove everything except what's required to build everything
+#
+# distclean: remove everything except what goes in the distribution
+#
 
-if FLaC__NO_ASM
-else
-if FLaC__CPU_IA32
-if FLaC__HAS_NASM
-ARCH_SUBDIRS = ia32
-libFLAC_la_LIBADD = ia32/libFLAC-asm.la
-endif
-endif
-endif
+SUBDIRS = doc include man src test build flac.pbproj obj
 
-SUBDIRS = $(ARCH_SUBDIRS) include .
-
-m4datadir = $(datadir)/aclocal
-m4data_DATA = libFLAC.m4
+DISTCLEANFILES = libtool-disable-static
 
 EXTRA_DIST = \
+	COPYING.FDL \
+	COPYING.GPL \
+	COPYING.LGPL \
 	Makefile.lite \
-	Makefile.vc \
-	libFLAC.m4
+	autogen.sh \
+	depcomp \
+	ltmain.sh \
+	strip_fPIC.sh
 
-# see 'http://www.gnu.org/software/libtool/manual.html#Versioning' for numbering convention
-libFLAC_la_LDFLAGS = -version-info 4:1:0
-
-libFLAC_la_SOURCES = \
-	bitbuffer.c \
-	bitmath.c \
-	cpu.c \
-	crc.c \
-	file_decoder.c \
-	file_encoder.c \
-	fixed.c \
-	format.c \
-	lpc.c \
-	md5.c \
-	memory.c \
-	metadata_iterators.c \
-	metadata_object.c \
-	seekable_stream_decoder.c \
-	seekable_stream_encoder.c \
-	stream_decoder.c \
-	stream_encoder.c \
-	stream_encoder_framing.c
+AUTOMAKE_OPTIONS = foreign

@@ -14,7 +14,7 @@ library_names=''
 old_library='mad.a'
 
 # Libraries that this one depends upon.
-dependency_libs=''
+dependency_libs=' -lpthread -lcx'
 
 # Version information for mad.
 current=2
@@ -29,4 +29,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/usr/local/lib'
+libdir='/extras/lib'

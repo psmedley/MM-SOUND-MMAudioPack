@@ -1,69 +1,107 @@
-#  libFLAC - Free Lossless Audio Codec library
+#  FLAC - Free Lossless Audio Codec
 #  Copyright (C) 2001,2002  Josh Coalson
 #
-#  This library is free software; you can redistribute it and/or
-#  modify it under the terms of the GNU Library General Public
-#  License as published by the Free Software Foundation; either
-#  version 2 of the License, or (at your option) any later version.
+#  This program is part of FLAC; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
 #
-#  This library is distributed in the hope that it will be useful,
+#  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-#  Library General Public License for more details.
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
 #
-#  You should have received a copy of the GNU Library General Public
-#  License along with this library; if not, write to the
-#  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-#  Boston, MA  02111-1307, USA.
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #
-# GNU makefile
+# GNU Makefile
+#
+# Useful targets
+#
+# all     : build all libraries and programs in the default configuration (currently 'release')
+# debug   : build all libraries and programs in debug mode
+# release : build all libraries and programs in release mode
+# test    : run the unit and stream tests
+# clean   : remove all non-distro files
 #
 
-LIB_NAME = libFLAC
-ifeq ($(DARWIN_BUILD),yes)
-DEFINES = -DFLAC__NO_NASM -DFLAC__ALIGN_MALLOC_DATA
-else
-ifeq ($(SOLARIS_BUILD),yes)
-DEFINES = -DFLAC__NO_NASM -DFLAC__ALIGN_MALLOC_DATA
-else
-DEFINES = -DFLAC__CPU_IA32 -DFLAC__HAS_NASM -DFLAC__ALIGN_MALLOC_DATA
-endif
-endif
-INCLUDES = -I./include -I../../include
-DEBUG_CFLAGS = -DFLAC__OVERFLOW_DETECT
+.PHONY: doc libFLAC libFLAC++ libOggFLAC libOggFLAC++ share plugin_common plugin_xmms flac metaflac test_libFLAC test_libFLAC++ test_libOggFLAC test_libOggFLAC++ test_streams
+all: doc libFLAC libFLAC++ libOggFLAC libOggFLAC++ share plugin_common plugin_xmms flac metaflac test_libFLAC test_libFLAC++ test_libOggFLAC test_libOggFLAC++ test_streams
 
-ifeq ($(DARWIN_BUILD),yes)
-else
-ifeq ($(SOLARIS_BUILD),yes)
-else
-ASM_OBJS = \
-	ia32/cpu_asm.o \
-	ia32/fixed_asm.o \
-	ia32/lpc_asm.o
-endif
-endif
+DEFAULT_CONFIG = release
 
-OBJS = $(ASM_OBJS) \
-	bitbuffer.o \
-	bitmath.o \
-	cpu.o \
-	crc.o \
-	file_decoder.o \
-	file_encoder.o \
-	fixed.o \
-	format.o \
-	lpc.o \
-	md5.o \
-	memory.o \
-	metadata_iterators.o \
-	metadata_object.o \
-	seekable_stream_decoder.o \
-	seekable_stream_encoder.o \
-	stream_decoder.o \
-	stream_encoder.o \
-	stream_encoder_framing.o
+CONFIG = $(DEFAULT_CONFIG)
 
-include ../../build/lib.mk
+debug   : CONFIG = debug
+release : CONFIG = release
 
-# DO NOT DELETE THIS LINE -- make depend depends on it.
+debug   : all
+release : all
+
+doc:
+	(cd $@ ; $(MAKE) -f Makefile.lite)
+
+libFLAC:
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+libFLAC++: libFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+libOggFLAC: libFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+libOggFLAC++: libFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+share:
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+flac: libFLAC libOggFLAC share
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+metaflac: libFLAC share
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+plugin_common: libFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+plugin_xmms: libFLAC plugin_common
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+test_streams: libFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+test_libFLAC: libFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+test_libFLAC++: libFLAC libFLAC++
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+test_libOggFLAC: libFLAC libOggFLAC
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+test_libOggFLAC++: libFLAC libOggFLAC libOggFLAC++
+	(cd src/$@ ; $(MAKE) -f Makefile.lite $(CONFIG))
+
+test: debug
+	(cd test ; $(MAKE) -f Makefile.lite)
+
+clean:
+	-(cd doc ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/libFLAC ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/libFLAC++ ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/libOggFLAC ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/libOggFLAC++ ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/share ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/flac ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/metaflac ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/plugin_common ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/plugin_xmms ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/test_libFLAC ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/test_libFLAC++ ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/test_libOggFLAC ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/test_libOggFLAC++ ; $(MAKE) -f Makefile.lite clean)
+	-(cd src/test_streams ; $(MAKE) -f Makefile.lite clean)
+	-(cd test ; $(MAKE) -f Makefile.lite clean)

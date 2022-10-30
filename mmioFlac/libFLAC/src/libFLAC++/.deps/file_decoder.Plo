@@ -1,0 +1,16 @@
+file_decoder.lo: file_decoder.cc ../../include/FLAC++/decoder.h \
+ ../../include/FLAC/file_decoder.h \
+ ../../include/FLAC/seekable_stream_decoder.h \
+ ../../include/FLAC/stream_decoder.h ../../include/FLAC/format.h \
+ ../../include/FLAC/ordinals.h \
+ ../../include/FLAC/seekable_stream_decoder.h \
+ ../../include/FLAC/stream_decoder.h ../../include/FLAC/assert.h
+../../include/FLAC++/decoder.h:
+../../include/FLAC/file_decoder.h:
+../../include/FLAC/seekable_stream_decoder.h:
+../../include/FLAC/stream_decoder.h:
+../../include/FLAC/format.h:
+../../include/FLAC/ordinals.h:
+../../include/FLAC/seekable_stream_decoder.h:
+../../include/FLAC/stream_decoder.h:
+../../include/FLAC/assert.h:

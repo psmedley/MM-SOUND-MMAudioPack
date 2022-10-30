@@ -1,0 +1,24 @@
+metadata.lo: metadata.cc ../../include/FLAC++/metadata.h \
+ ../../include/FLAC/metadata.h ../../include/FLAC/format.h \
+ ../../include/FLAC/ordinals.h ../../include/FLAC/assert.h \
+ u:/usr/include/stdlib.h u:/usr/include/sys/cdefs.h \
+ u:/usr/include/sys/gnu/cdefs.h u:/usr/include/features.h \
+ u:/usr/include/sys/_null.h u:/usr/include/sys/_types.h \
+ u:/usr/include/machine/_types.h u:/usr/include/386/_types.h \
+ u:/usr/include/malloc.h u:/usr/include/string.h u:/usr/include/strings.h
+../../include/FLAC++/metadata.h:
+../../include/FLAC/metadata.h:
+../../include/FLAC/format.h:
+../../include/FLAC/ordinals.h:
+../../include/FLAC/assert.h:
+u:/usr/include/stdlib.h:
+u:/usr/include/sys/cdefs.h:
+u:/usr/include/sys/gnu/cdefs.h:
+u:/usr/include/features.h:
+u:/usr/include/sys/_null.h:
+u:/usr/include/sys/_types.h:
+u:/usr/include/machine/_types.h:
+u:/usr/include/386/_types.h:
+u:/usr/include/malloc.h:
+u:/usr/include/string.h:
+u:/usr/include/strings.h:

@@ -382,8 +382,8 @@ float **vorbis_analysis_buffer(vorbis_dsp_state *v, int vals){
 static void _preextrapolate_helper(vorbis_dsp_state *v){
   int i;
   int order=32;
-  float *lpc= _ogg_malloc(order*sizeof(float));
-  float *work= _ogg_malloc(v->pcm_current*sizeof(float));
+  float *lpc=alloca(order*sizeof(*lpc));
+  float *work=alloca(v->pcm_current*sizeof(*work));
   long j;
   v->preextrapolate=1;
 
@@ -407,8 +407,6 @@ static void _preextrapolate_helper(vorbis_dsp_state *v){
 
     }
   }
-   _ogg_free(lpc);
-   _ogg_free(work);
 }
 
 

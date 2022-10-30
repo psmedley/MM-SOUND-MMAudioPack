@@ -9,6 +9,7 @@
 #include <os2me.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "mmioMP3.h"
 
 char buf[131072];
@@ -68,4 +69,3 @@ int main(int argc, char *argv[])
 
       return result;
 }
-

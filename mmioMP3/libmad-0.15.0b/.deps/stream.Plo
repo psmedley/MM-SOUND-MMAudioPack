@@ -1,10 +1,18 @@
-stream.lo : \
- stream.c config.h global.h H:\emx\include\stdlib.h \
- H:\emx\include\malloc.h bit.h stream.h
-stream.c :
-config.h :
-global.h :
-H:\emx\include\stdlib.h :
-H:\emx\include\malloc.h :
-bit.h :
-stream.h :
+stream.lo: stream.c config.h global.h U:/USR/include/stdlib.h \
+ U:/USR/include/sys/cdefs.h U:/USR/include/sys/gnu/cdefs.h \
+ U:/USR/include/features.h U:/USR/include/sys/_null.h \
+ U:/USR/include/sys/_types.h U:/USR/include/machine/_types.h \
+ U:/USR/include/386/_types.h U:/USR/include/malloc.h bit.h stream.h
+config.h:
+global.h:
+U:/USR/include/stdlib.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_null.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/malloc.h:
+bit.h:
+stream.h:

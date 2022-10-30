@@ -1,0 +1,20 @@
+fixed.lo: fixed.c U:/USR/include/math.h U:/USR/include/sys/cdefs.h \
+ U:/USR/include/sys/gnu/cdefs.h U:/USR/include/features.h \
+ U:/USR/include/sys/_types.h U:/USR/include/machine/_types.h \
+ U:/USR/include/386/_types.h U:/USR/include/machine/_limits.h \
+ U:/USR/include/386/_limits.h include/private/fixed.h \
+ ../../include/FLAC/format.h ../../include/FLAC/ordinals.h \
+ ../../include/FLAC/assert.h
+U:/USR/include/math.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/machine/_limits.h:
+U:/USR/include/386/_limits.h:
+include/private/fixed.h:
+../../include/FLAC/format.h:
+../../include/FLAC/ordinals.h:
+../../include/FLAC/assert.h:

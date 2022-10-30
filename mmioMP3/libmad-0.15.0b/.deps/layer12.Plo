@@ -1,15 +1,24 @@
-layer12.lo : \
- layer12.c config.h global.h H:\emx\include\limits.h fixed.h \
- bit.h stream.h frame.h timer.h layer12.h sf_table.dat qc_table.dat
-layer12.c :
-config.h :
-global.h :
-H:\emx\include\limits.h :
-fixed.h :
-bit.h :
-stream.h :
-frame.h :
-timer.h :
-layer12.h :
-sf_table.dat :
-qc_table.dat :
+layer12.lo: layer12.c config.h global.h U:/USR/include/limits.h \
+ U:/USR/include/sys/cdefs.h U:/USR/include/sys/gnu/cdefs.h \
+ U:/USR/include/features.h U:/USR/include/sys/limits.h \
+ U:/USR/include/machine/_limits.h U:/USR/include/386/_limits.h \
+ U:/USR/include/sys/syslimits.h fixed.h bit.h stream.h frame.h timer.h \
+ layer12.h sf_table.dat qc_table.dat
+config.h:
+global.h:
+U:/USR/include/limits.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/limits.h:
+U:/USR/include/machine/_limits.h:
+U:/USR/include/386/_limits.h:
+U:/USR/include/sys/syslimits.h:
+fixed.h:
+bit.h:
+stream.h:
+frame.h:
+timer.h:
+layer12.h:
+sf_table.dat:
+qc_table.dat:

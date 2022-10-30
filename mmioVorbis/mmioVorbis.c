@@ -680,4 +680,3 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 //    cw = _control87(cw,MCW_EM);
     return rc;
 }
-

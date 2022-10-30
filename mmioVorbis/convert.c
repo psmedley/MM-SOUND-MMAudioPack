@@ -8,6 +8,7 @@
 #include <os2me.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "mmioVorbis.h"
 
 char buf[131072];

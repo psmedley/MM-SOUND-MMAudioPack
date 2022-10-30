@@ -1,4 +1,4 @@
-#! H:\bin\ksh.exe
+#! sh
 
 # libtool - Provide generalized library-building support services.
 # Generated automatically by  (GNU libmad 0.15.0b)
@@ -27,10 +27,10 @@
 # the same distribution terms that you use for the rest of that program.
 
 # A sed that does not truncate output.
-SED="X:/bin/sed.exe"
+SED="u:/extras/bin/sed.exe"
 
 # Sed that helps us avoid accidentally triggering echo(1) options like -n.
-Xsed="X:/bin/sed.exe -e s/^X//"
+Xsed="u:/extras/bin/sed.exe -e s/^X//"
 
 # The HP-UX ksh and POSIX shell print the target directory to stdout
 # if CDPATH is set.
@@ -38,10 +38,10 @@ if test "X${CDPATH+set}" = Xset; then CDPATH=:; export CDPATH; fi
 
 # ### BEGIN LIBTOOL CONFIG
 
-# Libtool was configured on host adsl-64-142-27-208.sonic.net:
+# Libtool was configured on host SMEDLES:
 
 # Shell to use when invoking shell scripts.
-SHELL="H:\\bin\\ksh.exe"
+SHELL="sh"
 
 # Whether or not to build shared libraries.
 build_libtool_libs=no
@@ -60,10 +60,10 @@ host_alias=
 host=i386-pc-os2-emx
 
 # An echo program that does not interpret backslashes.
-echo="print -r"
+echo="printf %s\\n"
 
 # The archiver.
-AR="ar"
+AR="ar.exe"
 AR_FLAGS="cru"
 
 # The default C compiler.
@@ -73,16 +73,16 @@ CC="gcc"
 with_gcc=yes
 
 # The linker used to build libraries.
-LD="X:/BIN/ld.exe"
+LD="U:/usr/bin/ld"
 
 # Whether we need hard or soft links.
-LN_S="ln"
+LN_S="ln -s"
 
 # A BSD-compatible nm program.
-NM="X:\\bin/nm -B"
+NM="u:/extras/bin/nm -B"
 
 # A symbol stripping program
-STRIP=:
+STRIP=strip
 
 # Used to examine libraries when file_magic_cmd begins "file"
 MAGIC_CMD=file
@@ -144,7 +144,7 @@ dlopen_self=unknown
 dlopen_self_static=unknown
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
+link_static_flag=""
 
 # Compiler flag to turn off builtin functions.
 no_builtin_flag=" -fno-builtin -fno-rtti -fno-exceptions"
@@ -172,7 +172,7 @@ library_names_spec="\$libname.dll \$libname.a"
 soname_spec=""
 
 # Commands used to build and install an old-style archive.
-RANLIB="touch"
+RANLIB="echo"
 old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs\$old_deplibs~\$RANLIB \$oldlib"
 old_postinstall_cmds="\$RANLIB \$oldlib~chmod 644 \$oldlib"
 old_postuninstall_cmds=""
@@ -190,8 +190,8 @@ postinstall_cmds=""
 postuninstall_cmds=""
 
 # Commands to strip libraries.
-old_striplib=""
-striplib=""
+old_striplib="strip --strip-debug"
+striplib="strip --strip-unneeded"
 
 # Method to check whether dependent libraries are shared objects.
 deplibs_check_method="unknown"
@@ -212,13 +212,13 @@ finish_cmds=""
 finish_eval=""
 
 # Take the output of nm and produce a listing of raw symbols and C names.
-global_symbol_pipe=""
+global_symbol_pipe="sed -n -e 's/^.*[ 	]\\([ABCDGISTW][ABCDGISTW]*\\)[ 	][ 	]*\\(_\\)\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2\\3 \\3/p'"
 
 # Transform the output of nm in a proper C declaration
-global_symbol_to_cdecl=""
+global_symbol_to_cdecl="sed -n -e 's/^. .* \\(.*\\)\$/extern char \\1;/p'"
 
 # Transform the output of nm in a C name address pair
-global_symbol_to_c_name_address=""
+global_symbol_to_c_name_address="sed -n -e 's/^: \\([^ ]*\\) \$/  {\\\"\\1\\\", (lt_ptr) 0},/p' -e 's/^[BCDEGRST] \\([^ ]*\\) \\([^ ]*\\)\$/  {\"\\2\", (lt_ptr) \\&\\2},/p'"
 
 # This is the shared library runtime path variable.
 runpath_var=

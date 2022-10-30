@@ -9,6 +9,7 @@
 #include <os2me.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "mmioVorbis.h"
 
 int main(int argc, char *argv[])
@@ -66,4 +67,3 @@ int main(int argc, char *argv[])
 
       return result;
 }
-

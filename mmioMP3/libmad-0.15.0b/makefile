@@ -23,7 +23,7 @@ pkgincludedir = $(includedir)/libmad
 top_builddir = .
 
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
-INSTALL = X:bin/install -c
+INSTALL = u:/bin/install.exe
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
 install_sh_SCRIPT = $(install_sh) -c
@@ -36,28 +36,27 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = i386-pc-os2-emx
-ACLOCAL = aclocal-1.7
+ACLOCAL = ${SHELL} U:/DEV/mmaudiopack/mmiomp3/libmad-0.15.0b/missing --run aclocal-1.7
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = tar
+AMTAR = tar.exe
 ASO =  -DASO_ZEROCHECK
 ASO_OBJS = 
-AUTOCONF = autoconf
-AUTOHEADER = autoheader
-AUTOMAKE = automake-1.7
+AUTOCONF = ${SHELL} U:/DEV/mmaudiopack/mmiomp3/libmad-0.15.0b/missing --run autoconf
+AUTOHEADER = ${SHELL} U:/DEV/mmaudiopack/mmiomp3/libmad-0.15.0b/missing --run autoheader
+AUTOMAKE = ${SHELL} U:/DEV/mmaudiopack/mmiomp3/libmad-0.15.0b/missing --run automake-1.7
 AWK = gawk
 CC = gcc
 CCAS = $(CC)
 CCASFLAGS = $(CFLAGS)
-CCDEPMODE = depmode=gcc
-CFLAGS = -Wall -g -O -fforce-mem -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fschedule-insns2 -fstrength-reduce
-#CFLAGS = -Wall -g -O -fforce-mem -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fregmove -fschedule-insns2 -fstrength-reduce
+CCDEPMODE = depmode=gcc3
+CFLAGS = -Wall -D__EMX__ -DEMX -DOS2 -D__ST_MT_ERRNO__ -static-libgcc  -march=pentium -mtune=pentium4 -O -fforce-addr -fthread-jumps -fcse-follow-jumps -fcse-skip-blocks -fexpensive-optimizations -fregmove -fschedule-insns2 -fstrength-reduce
 CPP = gcc -E
 CPPFLAGS = 
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-ECHO = print -r
+ECHO = printf %s\n
 ECHO_C = \c
 ECHO_N = 
 ECHO_T = 
@@ -68,14 +67,14 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
-LDFLAGS = 
+LDFLAGS = -s -Zexe -Zomf -Zmap -Zhigh-mem -Zstack 8000 -D__ST_MT_ERRNO__ -static-libgcc
 LIBOBJS = 
-LIBS = 
+LIBS = -lpthread -lcx
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIBTOOL_DEPS = ./ltmain.sh
-LN_S = ln
+LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = makeinfo
+MAKEINFO = makeinfo --no-split
 OBJEXT = o
 PACKAGE = libmad
 PACKAGE_BUGREPORT = support@underbit.com
@@ -84,16 +83,16 @@ PACKAGE_STRING = MPEG Audio Decoder 0.15.0b
 PACKAGE_TARNAME = libmad
 PACKAGE_VERSION = 0.15.0b
 PATH_SEPARATOR = ;
-RANLIB = touch
+RANLIB = echo
 SET_MAKE = 
-SHELL = H:\bin\ksh.exe
-STRIP = :
+SHELL = sh
+STRIP = strip
 VERSION = 0.15.0b
 ac_ct_CC = gcc
-ac_ct_RANLIB = touch
-ac_ct_STRIP = :
-am__fastdepCC_FALSE = 
-am__fastdepCC_TRUE = #
+ac_ct_RANLIB = echo
+ac_ct_STRIP = strip
+am__fastdepCC_FALSE = #
+am__fastdepCC_TRUE = 
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -112,13 +111,13 @@ host_os = os2-emx
 host_vendor = pc
 includedir = ${prefix}/include
 infodir = ${prefix}/info
-install_sh = H:/MMAUDIO PAK/mmiomp3/libmad-0.15.0b/install-sh
+install_sh = U:/DEV/mmaudiopack/mmiomp3/libmad-0.15.0b/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localstatedir = ${prefix}/var
 mandir = ${prefix}/man
 oldincludedir = /usr/include
-prefix = /usr/local
+prefix = /extras
 program_transform_name = s,x,x,
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
@@ -335,37 +334,37 @@ distclean-depend:
 	$(LTCCASCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 
 .c.o:
-#	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
-#	  -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<; \
-#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
-#	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
-#	fi
-	source='$<' object='$@' libtool=no \
-	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' \
-	$(CCDEPMODE) $(depcomp) \
-	$(COMPILE) -c `test -f '$<' || echo '$(srcdir)/'`$<
+	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
+	  -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<; \
+	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
+	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
+	fi
+#	source='$<' object='$@' libtool=no \
+#	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' \
+#	$(CCDEPMODE) $(depcomp) \
+#	$(COMPILE) -c `test -f '$<' || echo '$(srcdir)/'`$<
 
 .c.obj:
-#	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
-#	  -c -o $@ `if test -f '$<'; then $(CYGPATH_W) '$<'; else $(CYGPATH_W) '$(srcdir)/$<'; fi`; \
-#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
-#	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
-#	fi
-	source='$<' object='$@' libtool=no \
-	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' \
-	$(CCDEPMODE) $(depcomp) \
-	$(COMPILE) -c `if test -f '$<'; then $(CYGPATH_W) '$<'; else $(CYGPATH_W) '$(srcdir)/$<'; fi`
+	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
+	  -c -o $@ `if test -f '$<'; then $(CYGPATH_W) '$<'; else $(CYGPATH_W) '$(srcdir)/$<'; fi`; \
+	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
+	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
+	fi
+#	source='$<' object='$@' libtool=no \
+#	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' \
+#	$(CCDEPMODE) $(depcomp) \
+#	$(COMPILE) -c `if test -f '$<'; then $(CYGPATH_W) '$<'; else $(CYGPATH_W) '$(srcdir)/$<'; fi`
 
 .c.lo:
-#	if $(LTCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
-#	  -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<; \
-#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Plo"; \
-#	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
-#	fi
-	source='$<' object='$@' libtool=yes \
-	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' \
-	$(CCDEPMODE) $(depcomp) \
-	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
+	if $(LTCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
+	  -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<; \
+	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Plo"; \
+	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
+	fi
+#	source='$<' object='$@' libtool=yes \
+#	depfile='$(DEPDIR)/$*.Plo' tmpdepfile='$(DEPDIR)/$*.TPlo' \
+#	$(CCDEPMODE) $(depcomp) \
+#	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 
 mostlyclean-libtool:
 	-rm -f *.lo

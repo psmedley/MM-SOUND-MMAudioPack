@@ -1,0 +1,3 @@
+crc.lo: crc.c include/private/crc.h ../../include/FLAC/ordinals.h
+include/private/crc.h:
+../../include/FLAC/ordinals.h:

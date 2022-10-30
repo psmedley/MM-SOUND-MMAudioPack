@@ -1,0 +1,52 @@
+file_decoder.lo: file_decoder.c U:/USR/include/stdio.h \
+ U:/USR/include/sys/cdefs.h U:/USR/include/sys/gnu/cdefs.h \
+ U:/USR/include/features.h U:/USR/include/sys/_types.h \
+ U:/USR/include/machine/_types.h U:/USR/include/386/_types.h \
+ U:/USR/include/stdlib.h U:/USR/include/sys/_null.h \
+ U:/USR/include/malloc.h U:/USR/include/string.h U:/USR/include/strings.h \
+ U:/USR/include/sys/stat.h U:/USR/include/sys/time.h \
+ U:/USR/include/sys/_timeval.h U:/USR/include/sys/types.h \
+ U:/USR/include/machine/endian.h U:/USR/include/386/endian.h \
+ U:/USR/include/sys/select.h U:/USR/include/sys/_sigset.h \
+ U:/USR/include/sys/timespec.h U:/USR/include/time.h \
+ ../../include/FLAC/assert.h include/protected/file_decoder.h \
+ ../../include/FLAC/file_decoder.h \
+ ../../include/FLAC/seekable_stream_decoder.h \
+ ../../include/FLAC/stream_decoder.h ../../include/FLAC/format.h \
+ ../../include/FLAC/ordinals.h \
+ include/protected/seekable_stream_decoder.h \
+ ../../include/FLAC/seekable_stream_decoder.h include/private/md5.h \
+ ../../include/FLAC/ordinals.h
+U:/USR/include/stdio.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/stdlib.h:
+U:/USR/include/sys/_null.h:
+U:/USR/include/malloc.h:
+U:/USR/include/string.h:
+U:/USR/include/strings.h:
+U:/USR/include/sys/stat.h:
+U:/USR/include/sys/time.h:
+U:/USR/include/sys/_timeval.h:
+U:/USR/include/sys/types.h:
+U:/USR/include/machine/endian.h:
+U:/USR/include/386/endian.h:
+U:/USR/include/sys/select.h:
+U:/USR/include/sys/_sigset.h:
+U:/USR/include/sys/timespec.h:
+U:/USR/include/time.h:
+../../include/FLAC/assert.h:
+include/protected/file_decoder.h:
+../../include/FLAC/file_decoder.h:
+../../include/FLAC/seekable_stream_decoder.h:
+../../include/FLAC/stream_decoder.h:
+../../include/FLAC/format.h:
+../../include/FLAC/ordinals.h:
+include/protected/seekable_stream_decoder.h:
+../../include/FLAC/seekable_stream_decoder.h:
+include/private/md5.h:
+../../include/FLAC/ordinals.h:

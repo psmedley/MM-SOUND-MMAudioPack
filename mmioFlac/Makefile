@@ -2,24 +2,24 @@
 CC=gcc
 CFLAGS=-O2 -Zcrtdll -Zomf -DUSE_OS2_TOOLKIT_HEADERS
 #CFLAGS=-Wall -g -DDEBUG -Zcrtdll -Zomf -DUSE_OS2_TOOLKIT_HEADERS
-LIBS= -lm -los2me
+LIBS= -lm -lmmio
 INCLUDES= -Iinclude
+LDFLAGS= -Zomf -Zmap
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CFLAGS)
 
-all: mmioflac.dll
+all: mmioFLAC.dll
                                                                  
-%.obj: %.c
+%.o: %.c
 	$(COMPILE) -c $<
 
-*.obj: mmioflac.h
+*.o: mmioflac.h
 
-mmioFLAC.dll: mmioflac.obj libFLAC/libFLAC.lib
-	$(CC) $(CFLAGS) -Zdll $(LDFLAGS) $(INCLUDES) $^ libFLAC/libFLAC.lib mmioflac.def -o $@ $(LIBS)
+mmioFLAC.dll: mmioFlac.o libFLAC/src/libFLAC/.libs/flac.a
+	$(CC) $(CFLAGS) -Zdll $(LDFLAGS) $(INCLUDES) $^ libFLAC/src/libFLAC/.libs/flac.a mmioflac.def -o $@ $(LIBS)
 
-mmioflac.exe: main.obj mmioflac.obj libFLAC/libFLAC.lib
+mmioflac.exe: main.o mmioflac.o libFLAC/libFLAC.lib
 	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ -Zstack 65536 $(LIBS)
 	
 clean:
-	-rm core *.obj mmioflac.exe mmioflac.dll
+	-rm core *.o mmioflac.exe mmioflac.dll
 
-

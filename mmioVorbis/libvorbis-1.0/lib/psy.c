@@ -82,19 +82,17 @@ static void attenuate_curve(float *c,float att){
     c[i]+=att;
 }
 
-#define WORKC(x,y,z) workc[(x)*P_LEVELS*EHMER_MAX +(y)*EHMER_MAX + (z)]
-#define ATHC(x,y) athc[(x)*EHMER_MAX +(y)]
 static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
 				  float center_boost, float center_decay_rate){
   int i,j,k,m;
   float ath[EHMER_MAX];
-  float *workc = _ogg_malloc(P_BANDS*P_LEVELS*EHMER_MAX*sizeof(float));
-  float *athc = _ogg_malloc(P_LEVELS*EHMER_MAX*sizeof(float));
-  float *brute_buffer=_ogg_malloc(n*sizeof(*brute_buffer));
+  float workc[P_BANDS][P_LEVELS][EHMER_MAX];
+  float athc[P_LEVELS][EHMER_MAX];
+  float *brute_buffer=alloca(n*sizeof(*brute_buffer));
 
   float ***ret=_ogg_malloc(sizeof(*ret)*P_BANDS);
 
-  memset(workc,0,P_BANDS*P_LEVELS*EHMER_MAX*sizeof(float));
+  memset(workc,0,sizeof(workc));
 
   for(i=0;i<P_BANDS;i++){
     /* we add back in the ATH to avoid low level curves falling off to
@@ -118,9 +116,9 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
     /* copy curves into working space, replicate the 50dB curve to 30
        and 40, replicate the 100dB curve to 110 */
     for(j=0;j<6;j++)
-      memcpy(&(WORKC(i,j+2,0)),tonemasks[i][j],EHMER_MAX*sizeof(*tonemasks[i][j]));
-    memcpy(&(WORKC(i,0,0)),tonemasks[i][0],EHMER_MAX*sizeof(*tonemasks[i][0]));
-    memcpy(&(WORKC(i,1,0)),tonemasks[i][0],EHMER_MAX*sizeof(*tonemasks[i][0]));
+      memcpy(workc[i][j+2],tonemasks[i][j],EHMER_MAX*sizeof(*tonemasks[i][j]));
+    memcpy(workc[i][0],tonemasks[i][0],EHMER_MAX*sizeof(*tonemasks[i][0]));
+    memcpy(workc[i][1],tonemasks[i][0],EHMER_MAX*sizeof(*tonemasks[i][0]));
     
     /* apply centered curve boost/decay */
     for(j=0;j<P_LEVELS;j++){
@@ -128,17 +126,17 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
 	float adj=center_boost+abs(EHMER_OFFSET-k)*center_decay_rate;
 	if(adj<0. && center_boost>0)adj=0.;
 	if(adj>0. && center_boost<0)adj=0.;
-	WORKC(i,j,k)+=adj;
+	workc[i][j][k]+=adj;
       }
     }
 
     /* normalize curves so the driving amplitude is 0dB */
     /* make temp curves with the ATH overlayed */
     for(j=0;j<P_LEVELS;j++){
-      attenuate_curve(&(WORKC(i,j,0)),curveatt_dB[i]+100.-(j<2?2:j)*10.-P_LEVEL_0);
-      memcpy(&(ATHC(j,0)),ath,EHMER_MAX*sizeof(float));
-      attenuate_curve(&(ATHC(j,0)),+100.-j*10.f-P_LEVEL_0);
-      max_curve(&(ATHC(j,0)),&(WORKC(i,j,0)));
+      attenuate_curve(workc[i][j],curveatt_dB[i]+100.-(j<2?2:j)*10.-P_LEVEL_0);
+      memcpy(athc[j],ath,EHMER_MAX*sizeof(**athc));
+      attenuate_curve(athc[j],+100.-j*10.f-P_LEVEL_0);
+      max_curve(athc[j],workc[i][j]);
     }
 
     /* Now limit the louder curves.
@@ -152,8 +150,8 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
        etc... */
     
     for(j=1;j<P_LEVELS;j++){
-      min_curve(&(ATHC(j,0)),&(ATHC(j-1,0)));
-      min_curve(&(WORKC(i,j,0)),&(ATHC(j,0)));
+      min_curve(athc[j],athc[j-1]);
+      min_curve(workc[i][j],athc[j]);
     }
   }
 
@@ -200,13 +198,13 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
 	  if(hi_bin>n)hi_bin=n;
 
 	  for(;l<hi_bin && l<n;l++)
-	    if(brute_buffer[l]>WORKC(k,m,j))
-	      brute_buffer[l]=WORKC(k,m,j);
+	    if(brute_buffer[l]>workc[k][m][j])
+	      brute_buffer[l]=workc[k][m][j];
 	}
 
 	for(;l<n;l++)
-	  if(brute_buffer[l]>WORKC(k,m,EHMER_MAX-1))
-	    brute_buffer[l]=WORKC(k,m,EHMER_MAX-1);
+	  if(brute_buffer[l]>workc[k][m][EHMER_MAX-1])
+	    brute_buffer[l]=workc[k][m][EHMER_MAX-1];
 
       }
 
@@ -225,13 +223,13 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
 	  if(hi_bin>n)hi_bin=n;
 
 	  for(;l<hi_bin && l<n;l++)
-	    if(brute_buffer[l]>WORKC(k,m,j))
-	      brute_buffer[l]=WORKC(k,m,j);
+	    if(brute_buffer[l]>workc[k][m][j])
+	      brute_buffer[l]=workc[k][m][j];
 	}
 
 	for(;l<n;l++)
-	  if(brute_buffer[l]>WORKC(k,m,EHMER_MAX-1))
-	    brute_buffer[l]=WORKC(k,m,EHMER_MAX-1);
+	  if(brute_buffer[l]>workc[k][m][EHMER_MAX-1])
+	    brute_buffer[l]=workc[k][m][EHMER_MAX-1];
 
       }
 
@@ -262,9 +260,6 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
     }
   }
 
-  _ogg_free(workc);
-  _ogg_free(athc);
-  _ogg_free(brute_buffer);
   return(ret);
 }
 

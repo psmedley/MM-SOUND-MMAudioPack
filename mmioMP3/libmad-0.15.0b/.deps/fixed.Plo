@@ -1,6 +1,4 @@
-fixed.lo : \
- fixed.c config.h global.h fixed.h
-fixed.c :
-config.h :
-global.h :
-fixed.h :
+fixed.lo: fixed.c config.h global.h fixed.h
+config.h:
+global.h:
+fixed.h:
