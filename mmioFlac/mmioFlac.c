@@ -208,7 +208,7 @@ FLAC__StreamDecoderWriteStatus mwrite
                mdata->bufsize++;
            } /* endif */
            if (mdata->bits_per_sample > 16) {
-               mdata->buffer[mdata->bufsize] = ((buffer[j][i] & 0xFF0000) >> 8);
+               mdata->buffer[mdata->bufsize] = (char)((buffer[j][i] & 0xFF0000) >> 8);
                mdata->bufsize++;
            } /* endif */
            if (mdata->bits_per_sample > 24) {
@@ -259,7 +259,7 @@ FLAC__StreamEncoderWriteStatus encodeWrite
     LONG rc;
     Mencode *mencode = client_data;
 	if (!buffer || !mencode) return FLAC__SEEKABLE_STREAM_DECODER_READ_STATUS_ERROR;
-	rc = mmioWrite(mencode->hmmio, buffer, bytes);
+	rc = mmioWrite(mencode->hmmio, (char *) buffer, bytes);
 #ifdef DEBUG
 			fprintf(file,"callback write bytes:%d rc:%ld\n",bytes,rc);
 #endif
