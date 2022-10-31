@@ -1,0 +1,37 @@
+local_string_utils.o: local_string_utils.c ../../config.h \
+ U:/USR/include/string.h U:/USR/include/sys/cdefs.h \
+ U:/USR/include/sys/gnu/cdefs.h U:/USR/include/features.h \
+ U:/USR/include/sys/_types.h U:/USR/include/machine/_types.h \
+ U:/USR/include/386/_types.h U:/USR/include/strings.h utils.h \
+ ../../include/FLAC/ordinals.h U:/USR/include/stdint.h \
+ U:/USR/include/sys/stdint.h U:/USR/include/machine/_stdint.h \
+ U:/USR/include/386/_stdint.h U:/USR/include/machine/_limits.h \
+ U:/USR/include/386/_limits.h ../../include/FLAC/format.h \
+ ../../include/FLAC/export.h ../../include/FLAC/ordinals.h \
+ U:/USR/include/stdio.h local_string_utils.h U:/USR/include/stdlib.h \
+ U:/USR/include/sys/_null.h U:/USR/include/malloc.h
+../../config.h:
+U:/USR/include/string.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/strings.h:
+utils.h:
+../../include/FLAC/ordinals.h:
+U:/USR/include/stdint.h:
+U:/USR/include/sys/stdint.h:
+U:/USR/include/machine/_stdint.h:
+U:/USR/include/386/_stdint.h:
+U:/USR/include/machine/_limits.h:
+U:/USR/include/386/_limits.h:
+../../include/FLAC/format.h:
+../../include/FLAC/export.h:
+../../include/FLAC/ordinals.h:
+U:/USR/include/stdio.h:
+local_string_utils.h:
+U:/USR/include/stdlib.h:
+U:/USR/include/sys/_null.h:
+U:/USR/include/malloc.h:

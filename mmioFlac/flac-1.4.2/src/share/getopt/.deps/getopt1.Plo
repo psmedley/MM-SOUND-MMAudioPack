@@ -1,0 +1,14 @@
+getopt/getopt1.lo: getopt/getopt1.c ../../config.h \
+ ../../include/share/getopt.h U:/USR/include/stdio.h \
+ U:/USR/include/sys/cdefs.h U:/USR/include/sys/gnu/cdefs.h \
+ U:/USR/include/features.h U:/USR/include/sys/_types.h \
+ U:/USR/include/machine/_types.h U:/USR/include/386/_types.h
+../../config.h:
+../../include/share/getopt.h:
+U:/USR/include/stdio.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:

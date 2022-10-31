@@ -1,0 +1,98 @@
+operations_shorthand_vorbiscomment.o: \
+ operations_shorthand_vorbiscomment.c ../../config.h options.h \
+ ../../include/FLAC/format.h ../../include/FLAC/export.h \
+ ../../include/FLAC/ordinals.h U:/USR/include/stdint.h \
+ U:/USR/include/sys/stdint.h U:/USR/include/sys/cdefs.h \
+ U:/USR/include/sys/gnu/cdefs.h U:/USR/include/features.h \
+ U:/USR/include/sys/_types.h U:/USR/include/machine/_types.h \
+ U:/USR/include/386/_types.h U:/USR/include/machine/_stdint.h \
+ U:/USR/include/386/_stdint.h U:/USR/include/machine/_limits.h \
+ U:/USR/include/386/_limits.h ../../include/share/getopt.h utils.h \
+ ../../include/FLAC/metadata.h U:/USR/include/sys/types.h \
+ U:/USR/include/machine/endian.h U:/USR/include/386/endian.h \
+ U:/USR/include/sys/select.h U:/USR/include/sys/_sigset.h \
+ ../../include/FLAC/callback.h U:/USR/include/stdlib.h \
+ U:/USR/include/sys/_null.h U:/USR/include/malloc.h \
+ ../../include/FLAC/format.h U:/USR/include/stdio.h \
+ ../../include/FLAC/assert.h ../../include/share/grabbag.h \
+ ../../include/share/grabbag/cuesheet.h \
+ ../../include/share/grabbag/file.h ../../include/FLAC/ordinals.h \
+ ../../include/share/compat.h U:/USR/include/stddef.h \
+ U:/USR/include/stdarg.h U:/USR/include/machine/stdarg.h \
+ U:/USR/include/386/stdarg.h U:/USR/include/unistd.h \
+ U:/USR/include/sys/unistd.h U:/USR/include/inttypes.h \
+ U:/USR/include/machine/_inttypes.h U:/USR/include/386/_inttypes.h \
+ U:/USR/include/io.h U:/USR/include/fcntl.h U:/USR/include/sys/fcntl.h \
+ U:/USR/include/sys/stat.h U:/USR/include/sys/time.h \
+ U:/USR/include/sys/_timeval.h U:/USR/include/sys/timespec.h \
+ U:/USR/include/time.h U:/USR/include/utime.h U:/USR/include/sys/utime.h \
+ ../../include/share/grabbag/picture.h \
+ ../../include/share/grabbag/replaygain.h \
+ ../../include/share/grabbag/seektable.h ../../include/share/utf8.h \
+ U:/USR/include/errno.h U:/USR/include/sys/errno.h \
+ U:/USR/include/string.h U:/USR/include/strings.h operations_shorthand.h
+../../config.h:
+options.h:
+../../include/FLAC/format.h:
+../../include/FLAC/export.h:
+../../include/FLAC/ordinals.h:
+U:/USR/include/stdint.h:
+U:/USR/include/sys/stdint.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/machine/_stdint.h:
+U:/USR/include/386/_stdint.h:
+U:/USR/include/machine/_limits.h:
+U:/USR/include/386/_limits.h:
+../../include/share/getopt.h:
+utils.h:
+../../include/FLAC/metadata.h:
+U:/USR/include/sys/types.h:
+U:/USR/include/machine/endian.h:
+U:/USR/include/386/endian.h:
+U:/USR/include/sys/select.h:
+U:/USR/include/sys/_sigset.h:
+../../include/FLAC/callback.h:
+U:/USR/include/stdlib.h:
+U:/USR/include/sys/_null.h:
+U:/USR/include/malloc.h:
+../../include/FLAC/format.h:
+U:/USR/include/stdio.h:
+../../include/FLAC/assert.h:
+../../include/share/grabbag.h:
+../../include/share/grabbag/cuesheet.h:
+../../include/share/grabbag/file.h:
+../../include/FLAC/ordinals.h:
+../../include/share/compat.h:
+U:/USR/include/stddef.h:
+U:/USR/include/stdarg.h:
+U:/USR/include/machine/stdarg.h:
+U:/USR/include/386/stdarg.h:
+U:/USR/include/unistd.h:
+U:/USR/include/sys/unistd.h:
+U:/USR/include/inttypes.h:
+U:/USR/include/machine/_inttypes.h:
+U:/USR/include/386/_inttypes.h:
+U:/USR/include/io.h:
+U:/USR/include/fcntl.h:
+U:/USR/include/sys/fcntl.h:
+U:/USR/include/sys/stat.h:
+U:/USR/include/sys/time.h:
+U:/USR/include/sys/_timeval.h:
+U:/USR/include/sys/timespec.h:
+U:/USR/include/time.h:
+U:/USR/include/utime.h:
+U:/USR/include/sys/utime.h:
+../../include/share/grabbag/picture.h:
+../../include/share/grabbag/replaygain.h:
+../../include/share/grabbag/seektable.h:
+../../include/share/utf8.h:
+U:/USR/include/errno.h:
+U:/USR/include/sys/errno.h:
+U:/USR/include/string.h:
+U:/USR/include/strings.h:
+operations_shorthand.h:

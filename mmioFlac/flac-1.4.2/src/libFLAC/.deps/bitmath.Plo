@@ -1,0 +1,62 @@
+bitmath.lo: bitmath.c ../../config.h include/private/bitmath.h \
+ ../../include/FLAC/ordinals.h U:/USR/include/stdint.h \
+ U:/USR/include/sys/stdint.h U:/USR/include/sys/cdefs.h \
+ U:/USR/include/sys/gnu/cdefs.h U:/USR/include/features.h \
+ U:/USR/include/sys/_types.h U:/USR/include/machine/_types.h \
+ U:/USR/include/386/_types.h U:/USR/include/machine/_stdint.h \
+ U:/USR/include/386/_stdint.h U:/USR/include/machine/_limits.h \
+ U:/USR/include/386/_limits.h ../../include/FLAC/assert.h \
+ ../../include/share/compat.h U:/USR/include/stddef.h \
+ U:/USR/include/stdarg.h U:/USR/include/machine/stdarg.h \
+ U:/USR/include/386/stdarg.h U:/USR/include/unistd.h \
+ U:/USR/include/sys/types.h U:/USR/include/machine/endian.h \
+ U:/USR/include/386/endian.h U:/USR/include/sys/select.h \
+ U:/USR/include/sys/_sigset.h U:/USR/include/sys/unistd.h \
+ U:/USR/include/sys/_null.h U:/USR/include/inttypes.h \
+ U:/USR/include/machine/_inttypes.h U:/USR/include/386/_inttypes.h \
+ U:/USR/include/io.h U:/USR/include/fcntl.h U:/USR/include/sys/fcntl.h \
+ U:/USR/include/sys/stat.h U:/USR/include/sys/time.h \
+ U:/USR/include/sys/_timeval.h U:/USR/include/sys/timespec.h \
+ U:/USR/include/time.h U:/USR/include/utime.h U:/USR/include/sys/utime.h
+../../config.h:
+include/private/bitmath.h:
+../../include/FLAC/ordinals.h:
+U:/USR/include/stdint.h:
+U:/USR/include/sys/stdint.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/machine/_stdint.h:
+U:/USR/include/386/_stdint.h:
+U:/USR/include/machine/_limits.h:
+U:/USR/include/386/_limits.h:
+../../include/FLAC/assert.h:
+../../include/share/compat.h:
+U:/USR/include/stddef.h:
+U:/USR/include/stdarg.h:
+U:/USR/include/machine/stdarg.h:
+U:/USR/include/386/stdarg.h:
+U:/USR/include/unistd.h:
+U:/USR/include/sys/types.h:
+U:/USR/include/machine/endian.h:
+U:/USR/include/386/endian.h:
+U:/USR/include/sys/select.h:
+U:/USR/include/sys/_sigset.h:
+U:/USR/include/sys/unistd.h:
+U:/USR/include/sys/_null.h:
+U:/USR/include/inttypes.h:
+U:/USR/include/machine/_inttypes.h:
+U:/USR/include/386/_inttypes.h:
+U:/USR/include/io.h:
+U:/USR/include/fcntl.h:
+U:/USR/include/sys/fcntl.h:
+U:/USR/include/sys/stat.h:
+U:/USR/include/sys/time.h:
+U:/USR/include/sys/_timeval.h:
+U:/USR/include/sys/timespec.h:
+U:/USR/include/time.h:
+U:/USR/include/utime.h:
+U:/USR/include/sys/utime.h:

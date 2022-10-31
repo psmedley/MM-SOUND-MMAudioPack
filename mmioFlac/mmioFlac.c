@@ -13,8 +13,8 @@
 #include <time.h>
 
 #include <ctype.h>
-#include <FLAC/seekable_stream_decoder.h>
-#include <FLAC/seekable_stream_encoder.h>
+#include <FLAC/stream_decoder.h>
+#include <FLAC/stream_encoder.h>
 #include <FLAC/ordinals.h>
 #include <FLAC/format.h>
 #include "mmioFLAC.h"
@@ -28,7 +28,7 @@ void openDebugFile() {
    if (!file) {
       rc = mciQuerySysValue(MSV_WORKPATH, path);
       if (rc) {
-          sprintf(fileName,"%s\\mmioFLAC%ld.log",path,time(NULL));
+          sprintf(fileName,"Z:\\temp\\mmioFLAC%ld.log",time(NULL));
 	      file = fopen(fileName,"wb");
 //	      file = freopen(fileName,"wb",file);
       } else {
@@ -44,7 +44,7 @@ void openDebugFile() {
 typedef struct _Mdata {
    	int t; /*Always READNUM */
     HMMIO hmmio;
-    FLAC__SeekableStreamDecoder* decoder;
+    FLAC__StreamDecoder* decoder;
     FLAC__bool eof;
     unsigned sample_rate;
     unsigned channels;
@@ -60,102 +60,102 @@ typedef struct _Mdata {
 typedef struct _Mencode {
    	int t; /*Always WRITENUM */
     HMMIO hmmio;
-    FLAC__SeekableStreamEncoder* encoder;
+    FLAC__StreamEncoder* encoder;
 } Mencode;
 
 
-FLAC__SeekableStreamDecoderReadStatus mread
-    (const FLAC__SeekableStreamDecoder *decoder, FLAC__byte buffer[],
+FLAC__StreamDecoderReadStatus mread
+    (const FLAC__StreamDecoder *decoder, FLAC__byte buffer[],
      unsigned *bytes, void *client_data)
 {
     LONG rc;
     Mdata *mdata = client_data;
-	if (!buffer || !bytes || !mdata) return FLAC__SEEKABLE_STREAM_DECODER_READ_STATUS_ERROR;
+	if (!buffer || !bytes || !mdata) return FLAC__STREAM_DECODER_READ_STATUS_ABORT;
 	rc = mmioRead(mdata->hmmio, buffer, *bytes);
 #ifdef DEBUG
 			fprintf(file,"callback read bytes:%d rc:%ld\n",*bytes,rc);
 #endif
     if (rc < 0) {
-       return FLAC__SEEKABLE_STREAM_DECODER_READ_STATUS_ERROR;
+       return FLAC__STREAM_DECODER_READ_STATUS_ABORT;
     } else {
        if (rc < *bytes) {
             mdata->eof = true;
        } /* endif */
        *bytes = rc;
-       return FLAC__SEEKABLE_STREAM_DECODER_READ_STATUS_OK;
+       return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
     } /* endif */
 }
 
-FLAC__SeekableStreamDecoderSeekStatus mseek
-    (const FLAC__SeekableStreamDecoder *decoder, 
+FLAC__StreamDecoderSeekStatus mseek
+    (const FLAC__StreamDecoder *decoder,
     FLAC__uint64 absolute_byte_offset, void *client_data)
 {
     LONG rc;
     Mdata *mdata = client_data;
-	if (!mdata) return FLAC__SEEKABLE_STREAM_DECODER_SEEK_STATUS_ERROR;
+	if (!mdata) return FLAC__STREAM_DECODER_SEEK_STATUS_ERROR;
  	rc = mmioSeek(mdata->hmmio, absolute_byte_offset, SEEK_SET);
 #ifdef DEBUG
 			fprintf(file,"callback seek rc:%ld\n",rc);
 #endif
     if (rc < 0) {
-       return FLAC__SEEKABLE_STREAM_DECODER_SEEK_STATUS_ERROR;
+       return FLAC__STREAM_DECODER_SEEK_STATUS_ERROR;
     } else {
        mdata->eof = (rc != absolute_byte_offset);
-       return FLAC__SEEKABLE_STREAM_DECODER_SEEK_STATUS_OK;
+       return FLAC__STREAM_DECODER_SEEK_STATUS_OK;
     } /* endif */
 }
 
-FLAC__SeekableStreamDecoderTellStatus mtell
-    (const FLAC__SeekableStreamDecoder *decoder, 
+FLAC__StreamDecoderTellStatus mtell
+    (const FLAC__StreamDecoder *decoder,
     FLAC__uint64 *absolute_byte_offset, void *client_data)
 {
    LONG rc;
    Mdata *mdata = client_data;
-   if (!absolute_byte_offset || !mdata) { return FLAC__SEEKABLE_STREAM_DECODER_TELL_STATUS_ERROR; }
+   if (!absolute_byte_offset || !mdata) { return FLAC__STREAM_DECODER_TELL_STATUS_ERROR; }
 
    rc = mmioSeek(mdata->hmmio, 0, SEEK_CUR);
 #ifdef DEBUG
 			fprintf(file,"callback tell rc:%ld\n",rc);
 #endif
    if (rc < 0) {
-       return FLAC__SEEKABLE_STREAM_DECODER_TELL_STATUS_ERROR;
+       return FLAC__STREAM_DECODER_TELL_STATUS_ERROR;
     } else {
        *absolute_byte_offset = rc;
-       return FLAC__SEEKABLE_STREAM_DECODER_TELL_STATUS_OK;
+       return FLAC__STREAM_DECODER_TELL_STATUS_OK;
     } /* endif */
 }
 
-FLAC__SeekableStreamDecoderLengthStatus mlength
-    (const FLAC__SeekableStreamDecoder *decoder, 
+FLAC__StreamDecoderLengthStatus mlength
+    (const FLAC__StreamDecoder *decoder,
     FLAC__uint64 *stream_length, void *client_data)
 {
    LONG rc1,rc2;
    Mdata *mdata = client_data;
-   if (!stream_length || !mdata) { return FLAC__SEEKABLE_STREAM_DECODER_LENGTH_STATUS_ERROR; }
+   if (!stream_length || !mdata) { return FLAC__STREAM_DECODER_LENGTH_STATUS_ERROR; }
 
 #ifdef DEBUG
 			fprintf(file,"callback length\n");
 #endif
    rc1 = mmioSeek(mdata->hmmio, 0, SEEK_CUR);
    if (rc1 < 0) {
-       return FLAC__SEEKABLE_STREAM_DECODER_LENGTH_STATUS_ERROR;
+       return FLAC__STREAM_DECODER_LENGTH_STATUS_ERROR;
    }
 
    rc2 = mmioSeek(mdata->hmmio, 0, SEEK_END);
    if (rc2 < 0) {
-       return FLAC__SEEKABLE_STREAM_DECODER_LENGTH_STATUS_ERROR;
+       return FLAC__STREAM_DECODER_LENGTH_STATUS_ERROR;
    }
 
    if (mmioSeek(mdata->hmmio, rc1, SEEK_SET) < 0) {
-       return FLAC__SEEKABLE_STREAM_DECODER_LENGTH_STATUS_ERROR;
+       return FLAC__STREAM_DECODER_LENGTH_STATUS_ERROR;
    }
 
    *stream_length = rc2;
-   return FLAC__SEEKABLE_STREAM_DECODER_LENGTH_STATUS_OK;
+   return FLAC__STREAM_DECODER_LENGTH_STATUS_OK;
 }
 
 FLAC__bool meof
-    (const FLAC__SeekableStreamDecoder *decoder, 
+    (const FLAC__StreamDecoder *decoder,
     void *client_data)
 {
    Mdata *mdata = client_data;
@@ -167,14 +167,14 @@ FLAC__bool meof
 }
 
 FLAC__StreamDecoderWriteStatus mwrite
-    (const FLAC__SeekableStreamDecoder *decoder, 
+    (const FLAC__StreamDecoder *decoder,
     const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
 {
    Mdata *mdata = client_data;
    unsigned i,j;
    size_t newend;
 
-   if (!mdata) { return FLAC__STREAM_DECODER_WRITE_STATUS_ABORT;} 
+   if (!mdata) { return FLAC__STREAM_DECODER_WRITE_STATUS_ABORT;}
 
    newend = frame->header.blocksize*frame->header.channels*(frame->header.bits_per_sample/8);
    if (mdata->bufend < newend) {
@@ -187,7 +187,7 @@ FLAC__StreamDecoderWriteStatus mwrite
 
    if (!mdata->buffer) {
         mdata->buffer = malloc(mdata->bufend);
-        if (!mdata->buffer) { return FLAC__STREAM_DECODER_WRITE_STATUS_ABORT;} 
+        if (!mdata->buffer) { return FLAC__STREAM_DECODER_WRITE_STATUS_ABORT;}
    } /* endif */
 
 #ifdef DEBUG
@@ -208,7 +208,7 @@ FLAC__StreamDecoderWriteStatus mwrite
                mdata->bufsize++;
            } /* endif */
            if (mdata->bits_per_sample > 16) {
-               mdata->buffer[mdata->bufsize] = (char)((buffer[j][i] & 0xFF0000) >> 8);
+               mdata->buffer[mdata->bufsize] = (char*) ((buffer[j][i] & 0xFF0000) >> 8);
                mdata->bufsize++;
            } /* endif */
            if (mdata->bits_per_sample > 24) {
@@ -221,14 +221,14 @@ FLAC__StreamDecoderWriteStatus mwrite
 #ifdef DEBUG
      fprintf(file,"write post-heap: %d\n",_heapchk());
 #endif
-   
+
    return FLAC__STREAM_DECODER_WRITE_STATUS_CONTINUE;
 }
 
 void mmetadata
-    (const FLAC__SeekableStreamDecoder *decoder, 
+    (const FLAC__StreamDecoder *decoder,
     const FLAC__StreamMetadata *metadata, void *client_data)
-{ 
+{
     if (!decoder || !metadata || !client_data) return;
 #ifdef DEBUG
 			fprintf(file,"callback metadata\n");
@@ -242,24 +242,24 @@ void mmetadata
     } /* endif */
 }
 
-void merror(const FLAC__SeekableStreamDecoder *decoder, 
+void merror(const FLAC__StreamDecoder *decoder,
     FLAC__StreamDecoderErrorStatus status, void *client_data)
 {
 #ifdef DEBUG
   fprintf(file, "merror: %d\n",status);
      fprintf(file,"heap: %d\n",_heapchk());
 #endif
- return; 
+ return;
 }
 
 FLAC__StreamEncoderWriteStatus encodeWrite
-	(const FLAC__SeekableStreamEncoder *encoder, const FLAC__byte buffer[], 
+	(const FLAC__StreamEncoder *encoder, const FLAC__byte buffer[],
 	 unsigned bytes, unsigned samples, unsigned current_frame, void *client_data)
 {
     LONG rc;
     Mencode *mencode = client_data;
-	if (!buffer || !mencode) return FLAC__SEEKABLE_STREAM_DECODER_READ_STATUS_ERROR;
-	rc = mmioWrite(mencode->hmmio, (char *) buffer, bytes);
+	if (!buffer || !mencode) return FLAC__STREAM_DECODER_READ_STATUS_ABORT;
+	rc = mmioWrite(mencode->hmmio, buffer, bytes);
 #ifdef DEBUG
 			fprintf(file,"callback write bytes:%d rc:%ld\n",bytes,rc);
 #endif
@@ -270,20 +270,20 @@ FLAC__StreamEncoderWriteStatus encodeWrite
     } /* endif */
 }
 
-FLAC__SeekableStreamEncoderSeekStatus encodeSeek
-	(const FLAC__SeekableStreamEncoder *encoder, 
+FLAC__StreamEncoderSeekStatus encodeSeek
+	(const FLAC__StreamEncoder *encoder,
 	 FLAC__uint64 absolute_byte_offset, void *client_data) {
     LONG rc;
     Mencode *mencode = client_data;
-	if (!mencode) return FLAC__SEEKABLE_STREAM_DECODER_READ_STATUS_ERROR;
+	if (!mencode) return FLAC__STREAM_DECODER_READ_STATUS_ABORT;
 	rc = mmioSeek(mencode->hmmio, absolute_byte_offset, SEEK_SET);
 #ifdef DEBUG
 			fprintf(file,"encode seek callback:%lld rc:%ld\n",absolute_byte_offset,rc);
 #endif
     if (absolute_byte_offset != rc) {
-       return FLAC__SEEKABLE_STREAM_ENCODER_SEEK_STATUS_ERROR;
+       return FLAC__STREAM_ENCODER_SEEK_STATUS_ERROR;
     } else {
-       return FLAC__SEEKABLE_STREAM_ENCODER_SEEK_STATUS_OK;
+       return FLAC__STREAM_ENCODER_SEEK_STATUS_OK;
     } /* endif */
 }
 
@@ -298,7 +298,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 #endif
 	switch (usMsg) {
 	case MMIOM_OPEN:
-		{	
+		{
      		HMMIO hmmioSS;
      		MMIOINFO mmioinfoSS;
 	    	PSZ pszFileName = (char *)lParam1;
@@ -329,16 +329,16 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 			mmioinfoSS.ulFlags |= MMIO_NOIDENTIFY;
 			if (mmioinfoSS.ulFlags & MMIO_WRITE) {
 				mmioinfoSS.ulFlags ^= MMIO_WRITE;
-				mmioinfoSS.ulFlags |= MMIO_READWRITE;
-      		}
-			
+                                mmioinfoSS.ulFlags |= MMIO_READWRITE;
+                        }
+
 			hmmioSS = mmioOpen (pszFileName, &mmioinfoSS, mmioinfoSS.ulFlags);
 			if (pmmioinfo->ulFlags & MMIO_DELETE) {
       			if (!hmmioSS) {
             		pmmioinfo->ulErrorRet = MMIOERR_DELETE_FAILED;
-            		return MMIO_ERROR;
-            	}
-            	else return MMIO_SUCCESS;
+                        return MMIO_ERROR;
+                        }
+                        else return MMIO_SUCCESS;
 			}
    			if (!hmmioSS) return MMIO_ERROR;
    			if (pmmioinfo->ulFlags & MMIO_READ) {
@@ -356,39 +356,52 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
  	      		pmmioinfo->pExtraInfoStruct = (PVOID)mdata;
   	     		{
                     FLAC__bool rc = true;
-            		mdata->decoder = FLAC__seekable_stream_decoder_new();
+            		mdata->decoder = (PVOID) FLAC__stream_decoder_new();
 	       			if(!mdata->decoder) {
            	  			free(mdata);
 	            		mmioClose(hmmioSS, 0);
  	           			return MMIO_ERROR;
-             		}
-   	         		if (!FLAC__seekable_stream_decoder_set_read_callback(mdata->decoder, mread)) {
+                                }
+                                if(FLAC__stream_decoder_init_stream(mdata->decoder,
+                                                                    mread,
+                                                                    mseek,
+                                                                    mtell,
+                                                                    mlength,
+                                                                    meof,
+                                                                    mwrite,
+                                                                    mmetadata,
+                                                                    merror,
+                                                                    mdata
+                                                                    ) != FLAC__STREAM_DECODER_INIT_STATUS_OK)
+   	         	/*	if (!FLAC__seekable_stream_decoder_set_read_callback((PVOID) mdata->decoder, mread)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_seek_callback(mdata->decoder, mseek)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_seek_callback((PVOID) mdata->decoder, mseek)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_tell_callback(mdata->decoder, mtell)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_tell_callback((PVOID) mdata->decoder, mtell)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_length_callback(mdata->decoder, mlength)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_length_callback((PVOID) mdata->decoder, mlength)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_eof_callback(mdata->decoder, meof)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_eof_callback((PVOID) mdata->decoder, meof)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_write_callback(mdata->decoder, mwrite)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_write_callback((PVOID) mdata->decoder, mwrite)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_metadata_callback(mdata->decoder, mmetadata)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_metadata_callback((PVOID) mdata->decoder, mmetadata)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_error_callback(mdata->decoder, merror)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_error_callback((PVOID) mdata->decoder, merror)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_decoder_set_client_data(mdata->decoder,mdata)) {
+   	         		if (!FLAC__seekable_stream_decoder_set_client_data((PVOID) mdata->decoder,mdata)) {
                         rc = false; } else
-   	         		if (FLAC__SEEKABLE_STREAM_DECODER_OK != FLAC__seekable_stream_decoder_init(mdata->decoder)) {
-                        rc = false; } else
+   	         		if (FLAC__SEEKABLE_STREAM_DECODER_OK != FLAC__seekable_stream_decoder_init((PVOID) mdata->decoder)) {*/
+                                    rc = false;
+                                else
 #ifdef DEBUG
 			fprintf(file,"open here rc:%d\n",rc);
 #endif
-                    if (!FLAC__seekable_stream_decoder_process_until_end_of_metadata(mdata->decoder))  { 
+                    if (!FLAC__stream_decoder_process_until_end_of_metadata((PVOID) mdata->decoder))  {
                         rc = false; }
-	       			if(!rc) {
-                        FLAC__seekable_stream_decoder_delete (mdata->decoder);
+                    if(!rc) {
+                        FLAC__stream_decoder_finish((PVOID) mdata->decoder);
+                        FLAC__stream_decoder_delete ((PVOID) mdata->decoder);
            	  			free(mdata);
 	            		mmioClose(hmmioSS, 0);
  	           			return MMIO_ERROR;
@@ -412,30 +425,39 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 	            mencode->hmmio = hmmioSS;
  	      		pmmioinfo->pExtraInfoStruct = (PVOID)mencode;
   	     		{
-                    FLAC__bool rc = true;
-            		mencode->encoder = FLAC__seekable_stream_encoder_new();
+                            FLAC__bool rc = true;
+                            if (!mencode->encoder) {
+            		mencode->encoder = (PVOID) FLAC__stream_encoder_new();
 	       			if(!mencode->encoder) {
            	  			free(mencode);
 	            		mmioClose(hmmioSS, 0);
  	           			return MMIO_ERROR;
-             		}
-   	         		if (!FLAC__seekable_stream_encoder_set_write_callback(mencode->encoder,encodeWrite )) {
+                                }
+                            }
+                                 if (FLAC__stream_encoder_init_stream((PVOID) mencode->encoder,
+                                                                      encodeWrite, encodeSeek,
+                                                                      NULL, NULL, mencode)
+                                     != FLAC__STREAM_ENCODER_OK)
+                                     rc = false;
+   	               /* 	if (!FLAC__seekable_stream_encoder_set_write_callback((PVOID) mencode->encoder,encodeWrite )) {
                        rc = false; } else
-   	         		if (!FLAC__seekable_stream_encoder_set_seek_callback(mencode->encoder,encodeSeek)) {
+   	         		if (!FLAC__seekable_stream_encoder_set_seek_callback((PVOID) mencode->encoder,encodeSeek)) {
                         rc = false; } else
-   	         		if (!FLAC__seekable_stream_encoder_set_client_data(mencode->encoder,mencode)) {
+   	         		if (!FLAC__seekable_stream_encoder_set_client_data((PVOID) mencode->encoder,mencode)) {
                         rc = false; } else
 //		if (FLAC__SEEKABLE_STREAM_ENCODER_OK != FLAC__seekable_stream_encoder_init(mencode->encoder))
-//  			return MMIO_ERROR;
+//  			return MMIO_ERROR;  This was remmed in the original code */
+
 #ifdef DEBUG
 			fprintf(file,"open here rc:%d\n",rc);
 #endif
-	       			if(!rc) {
-                        FLAC__seekable_stream_encoder_delete (mencode->encoder);
+                        if(!rc) {
+                        FLAC__stream_encoder_finish (mencode->encoder);
+                        FLAC__stream_encoder_delete ((PVOID) mencode->encoder);
            	  			free(mencode);
 	            		mmioClose(hmmioSS, 0);
  	           			return MMIO_ERROR;
-             		}
+                                }
             	}
 #ifdef DEBUG
 				fprintf(file,"Open successfull\n");
@@ -444,16 +466,16 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
       		}
       		return MMIO_ERROR;
 		}
-	    break;                                                 
+	    break;
 	case MMIOM_READ: {
 		if (!pmmioinfo || !pmmioinfo->pExtraInfoStruct || !lParam1) return MMIO_ERROR;
-		
+
 		if (!pmmioinfo->ulTranslate & MMIO_TRANSLATEDATA) {
      		return MMIO_ERROR;
      	} else {
     		Mdata *mdata;
             LONG total = 0;
-    
+
       		mdata = (Mdata*)pmmioinfo->pExtraInfoStruct;
 			if (READNUM != mdata->t) return MMIO_ERROR;
 
@@ -468,18 +490,18 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
                 if (mdata->bufsize==mdata->bufat) {
                     FLAC__bool rc;
 #ifdef DEBUG
-			fprintf(file,"process single, %d\n",FLAC__seekable_stream_decoder_get_state(mdata->decoder));
+			fprintf(file,"process single, %d\n",FLAC__stream_decoder_get_state(mdata->decoder));
      fprintf(file,"heap: %d\n",_heapchk());
 #endif
-                    rc = FLAC__seekable_stream_decoder_process_single(mdata->decoder);
+                    rc = FLAC__stream_decoder_process_single((PVOID) mdata->decoder);
 #ifdef DEBUG
      fprintf(file,"post-heap: %d\n",_heapchk());
 #endif
                     if (false==rc) {
 #ifdef DEBUG
-			fprintf(file,"unexpected state:%d\n",FLAC__seekable_stream_decoder_get_state(mdata->decoder));
+			fprintf(file,"unexpected state:%d\n",FLAC__stream_decoder_get_state(mdata->decoder));
 #endif
-                        if (FLAC__STREAM_DECODER_END_OF_STREAM==FLAC__seekable_stream_decoder_get_state(mdata->decoder)) {
+                        if (FLAC__STREAM_DECODER_END_OF_STREAM==FLAC__stream_decoder_get_state((PVOID) mdata->decoder)) {
                             return total;
                         } /* endif */
                         return MMIO_ERROR;
@@ -512,11 +534,11 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
             FLAC__bool rc;
 
     		if (!pmmioinfo || !pmmioinfo->pExtraInfoStruct) return MMIO_ERROR;
-    		if (!pmmioinfo->ulTranslate & MMIO_TRANSLATEDATA) return MMIO_ERROR;    	
-    
+    		if (!pmmioinfo->ulTranslate & MMIO_TRANSLATEDATA) return MMIO_ERROR;
+
       		mdata = (Mdata*)pmmioinfo->pExtraInfoStruct;
 			if (READNUM != mdata->t) return MMIO_ERROR;
-            
+
             if (SEEK_END == lParam2) {
                 posDesired = mdata->total_samples-1;
             } else if (SEEK_CUR == lParam2) {
@@ -527,7 +549,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 
             posDesired += lParam1/(mdata->bits_per_sample*mdata->channels/8);
 
-            rc = FLAC__seekable_stream_decoder_seek_absolute (mdata->decoder, posDesired);
+            rc = FLAC__stream_decoder_seek_absolute ((PVOID) mdata->decoder, posDesired);
 
             if (rc) {
                 mdata->byteAt=posDesired*(mdata->bits_per_sample*mdata->channels/8);
@@ -544,20 +566,20 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 		Mdata *mdata;
         HMMIO hmmio;
 		if (!pmmioinfo) return MMIO_ERROR;
-		
+
   		mdata = (Mdata*)pmmioinfo->pExtraInfoStruct;
 		if (mdata && READNUM==mdata->t) {
             hmmio = mdata->hmmio;
 #ifdef DEBUG
        	    fprintf(file,"pre CLOSE\n");
-#endif		
+#endif
             if (mdata->decoder) {
-//                FLAC__seekable_stream_decoder_finish (mdata->decoder);
-                FLAC__seekable_stream_decoder_delete (mdata->decoder);
+                FLAC__stream_decoder_finish(mdata->decoder);
+                FLAC__stream_decoder_delete((PVOID) mdata->decoder);
             }
 #ifdef DEBUG
        	    fprintf(file,"mid CLOSE\n");
-#endif		
+#endif
             if (mdata->buffer) free(mdata->buffer);
             mdata->buffer = 0;
            	free(mdata);
@@ -565,7 +587,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
             mdata = 0;
 #ifdef DEBUG
        	    fprintf(file,"write CLOSE\n");
-#endif		
+#endif
 	        return mmioClose(hmmio, 0);
         }
 		if (mdata && WRITENUM==mdata->t) {
@@ -575,19 +597,19 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 #ifdef DEBUG
        	    fprintf(file,"pre CLOSE\n");
 			mencode->t=0;
-#endif		
+#endif
             if (mencode->encoder) {
-//                FLAC__seekable_stream_encoder_finish (mencode->encoder);
-                FLAC__seekable_stream_encoder_delete (mencode->encoder);
+                FLAC__stream_encoder_finish(mencode->encoder);
+                FLAC__stream_encoder_delete((PVOID) mencode->encoder);
             }
 #ifdef DEBUG
        	    fprintf(file,"mid CLOSE\n");
-#endif		
+#endif
             pmmioinfo->pExtraInfoStruct = 0;
             mencode = 0;
 #ifdef DEBUG
        	    fprintf(file,"write CLOSE\n");
-#endif		
+#endif
 	        return mmioClose(hmmio, 0);
         }
      	return MMIO_ERROR;
@@ -633,7 +655,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
     }
     break;
 	case MMIOM_GETFORMATNAME:
-		if (lParam2 > 6) { 
+		if (lParam2 > 6) {
      		strcpy((PSZ)lParam1, "FLAC");
      		return MMIO_SUCCESS;
      	} else return MMIO_ERROR;
@@ -643,7 +665,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 	case MMIOM_GETHEADER: {
 		Mdata *mdata;
     	PMMAUDIOHEADER mmaudioheader;
-    	
+
 		if (!pmmioinfo || !pmmioinfo->pExtraInfoStruct) return 0;
 		if (!(pmmioinfo->ulFlags & MMIO_READ)) return 0;
 		mdata = (Mdata*)pmmioinfo->pExtraInfoStruct;
@@ -652,7 +674,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
             pmmioinfo->ulErrorRet = MMIOERR_INVALID_STRUCTURE;
             return 0;
         }
-		
+
 		if (!(pmmioinfo->ulTranslate & MMIO_TRANSLATEHEADER) &&
 		    !(pmmioinfo->ulTranslate & MMIO_TRANSLATEDATA)) return 0;
 		mmaudioheader = (PMMAUDIOHEADER)lParam1;
@@ -668,11 +690,11 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 		mmaudioheader->mmXWAVHeader.WAVEHeader.ulSamplesPerSec = mdata->sample_rate;
 		mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample =  mdata->bits_per_sample;
 		mmaudioheader->mmXWAVHeader.WAVEHeader.ulAvgBytesPerSec=
-			mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels * 
+			mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels *
 			mmaudioheader->mmXWAVHeader.WAVEHeader.ulSamplesPerSec *
 			mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample / 8;
 		mmaudioheader->mmXWAVHeader.WAVEHeader.usBlockAlign=
-			mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels * 
+			mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels *
 			mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample / 8;
 		mmaudioheader->mmXWAVHeader.XWAVHeaderInfo.ulAudioLengthInBytes=
             mdata->total_samples*
@@ -693,7 +715,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
 		Mencode *mencode;
     	PMMAUDIOHEADER mmaudioheader;
 		int rc;
-    	
+
 		if (!pmmioinfo || !pmmioinfo->pExtraInfoStruct) return 0;
 		if (!(pmmioinfo->ulFlags & MMIO_WRITE)) return 0;
 		mencode = (Mencode*)pmmioinfo->pExtraInfoStruct;
@@ -702,7 +724,7 @@ LONG APIENTRY IOProc_Entry(PVOID pmmioStr, USHORT usMsg, LONG lParam1,
             pmmioinfo->ulErrorRet = MMIOERR_INVALID_STRUCTURE;
             return 0;
         }
-		
+
 		if (!(pmmioinfo->ulTranslate & MMIO_TRANSLATEHEADER) &&
 		    !(pmmioinfo->ulTranslate & MMIO_TRANSLATEDATA)) return 0;
 		mmaudioheader = (PMMAUDIOHEADER)lParam1;
@@ -720,33 +742,44 @@ mmaudioheader->mmXWAVHeader.XWAVHeaderInfo.ulAudioLengthInBytes/
 	(mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels*mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample/8));
 #endif
 
-		if (!FLAC__seekable_stream_encoder_set_streamable_subset(mencode->encoder, 
-				false)) 
+		if (!FLAC__stream_encoder_set_streamable_subset((PVOID) mencode->encoder,
+				false))
 			return 0;
-		if (!FLAC__seekable_stream_encoder_set_channels(mencode->encoder, 
-				mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels)) 
+		if (!FLAC__stream_encoder_set_channels((PVOID) mencode->encoder,
+				mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels))
 			return 0;
-		if (!FLAC__seekable_stream_encoder_set_bits_per_sample(mencode->encoder, 
-				mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample)) 
+		if (!FLAC__stream_encoder_set_bits_per_sample((PVOID) mencode->encoder,
+				mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample))
 			return 0;
-		if (!FLAC__seekable_stream_encoder_set_sample_rate(mencode->encoder, 
-				mmaudioheader->mmXWAVHeader.WAVEHeader.ulSamplesPerSec)) 
+		if (!FLAC__stream_encoder_set_sample_rate((PVOID) mencode->encoder,
+				mmaudioheader->mmXWAVHeader.WAVEHeader.ulSamplesPerSec))
 			return 0;
 #if 0
-		if (!FLAC__seekable_stream_encoder_set_total_samples_estimate(mencode->encoder, 
+		if (!FLAC__stream_encoder_set_total_samples_estimate((PVOID) mencode->encoder,
 				mmaudioheader->mmXWAVHeader.XWAVHeaderInfo.ulAudioLengthInBytes/
-					(mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels*mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample/8))) 
+					(mmaudioheader->mmXWAVHeader.WAVEHeader.usChannels*mmaudioheader->mmXWAVHeader.WAVEHeader.usBitsPerSample/8)))
 			return 0;
 #endif
 
 #ifdef DEBUG
-fprintf(file,"header set %d.\n",FLAC__seekable_stream_encoder_get_state(mencode->encoder));
+fprintf(file,"header set %d.\n",FLAC__stream_encoder_get_state(mencode->encoder));
 #endif
-		rc = FLAC__seekable_stream_encoder_init(mencode->encoder);
+
+
+                            if (!mencode->encoder) {
+            		mencode->encoder = (PVOID) FLAC__stream_encoder_new();
+	       			if(!mencode->encoder) {
+           	  			free(mencode);
+ 	           			return MMIO_ERROR;
+                                }
+                            }
+		rc = FLAC__stream_encoder_init_stream((PVOID) mencode->encoder,
+                                                      encodeWrite, encodeSeek,
+                                                      NULL, NULL, mencode);
 #ifdef DEBUG
-fprintf(file,"initalized %d : %d.\n", rc, FLAC__seekable_stream_encoder_get_stream_encoder_state(mencode->encoder));
+fprintf(file,"initalized %d : %d.\n", rc, FLAC__stream_encoder_get_state(mencode->encoder));
 #endif
-		if (FLAC__SEEKABLE_STREAM_ENCODER_OK != rc) {
+		if (FLAC__STREAM_ENCODER_OK != rc) {
   			return 0;
 		}
 		return (sizeof (MMAUDIOHEADER));
@@ -760,8 +793,8 @@ fprintf(file,"initalized %d : %d.\n", rc, FLAC__seekable_stream_encoder_get_stre
                if (!lParam1) return MMIO_ERROR;
                return mmioWrite(mencode->hmmio, (PVOID)lParam1, lParam2);
           } else {
-             	int sampleSize =  
-	FLAC__seekable_stream_encoder_get_bits_per_sample(mencode->encoder)/8;
+             	int sampleSize =
+	FLAC__stream_encoder_get_bits_per_sample((PVOID) mencode->encoder)/8;
 				int samples;
 				int i, j;
 				FLAC__int32   	  *buf = 0;
@@ -778,9 +811,9 @@ fprintf(file,"Bad Write Buffer Size, %ld : %d\n",lParam2, sampleSize);
 #ifdef DEBUG
 fprintf(file,"buffer allocated %ld\n", lParam2);
 #endif
-				if (FLAC__seekable_stream_encoder_get_bits_per_sample(mencode->encoder)<=8) {
+				if (FLAC__stream_encoder_get_bits_per_sample((PVOID) mencode->encoder)<=8) {
 					for(i=0; i<lParam2; i++){
- 	      				buf[i]=((unsigned char *)lParam1)[i]-(1<<(FLAC__seekable_stream_encoder_get_bits_per_sample(mencode->encoder)-1));
+ 	      				buf[i]=((unsigned char *)lParam1)[i]-(1<<(FLAC__stream_encoder_get_bits_per_sample((PVOID) mencode->encoder)-1));
   	     			}
 				} else {
 					for(i=0; i<samples; i++){
@@ -794,7 +827,7 @@ fprintf(file,"buffer allocated %ld\n", lParam2);
 #ifdef DEBUG
 fprintf(file,"Ready to write %d samples.\n",samples);
 #endif
-			if (!FLAC__seekable_stream_encoder_process_interleaved(mencode->encoder, buf, samples/FLAC__seekable_stream_encoder_get_channels(mencode->encoder))) {
+			if (!FLAC__stream_encoder_process_interleaved((PVOID) mencode->encoder, buf, samples/FLAC__stream_encoder_get_channels((PVOID) mencode->encoder))) {
       			free(buf);
 				return MMIO_ERROR;
 			} else {
@@ -805,9 +838,8 @@ fprintf(file,"Ready to write %d samples.\n",samples);
     }
     break;
 	}
-#ifdef DEBUG	
+#ifdef DEBUG
 	fprintf(file,"unexpected command: %x\n",usMsg);
 #endif
 	return MMIOERR_UNSUPPORTED_MESSAGE;
 }
-

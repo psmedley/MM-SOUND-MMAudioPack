@@ -1,0 +1,222 @@
+main.o: main.cpp ../../../../config.h u:/usr/include/stdio.h \
+ u:/usr/include/sys/cdefs.h u:/usr/include/sys/gnu/cdefs.h \
+ u:/usr/include/features.h u:/usr/include/sys/_types.h \
+ u:/usr/include/machine/_types.h u:/usr/include/386/_types.h \
+ u:/usr/include/stdlib.h u:/usr/include/sys/_null.h \
+ u:/usr/include/malloc.h u:/usr/include/string.h u:/usr/include/strings.h \
+ ../../../../include/FLAC++/metadata.h \
+ ../../../../include/FLAC++/export.h ../../../../include/FLAC/metadata.h \
+ u:/usr/include/sys/types.h u:/usr/include/machine/endian.h \
+ u:/usr/include/386/endian.h u:/usr/include/sys/select.h \
+ u:/usr/include/sys/_sigset.h ../../../../include/FLAC/export.h \
+ ../../../../include/FLAC/callback.h ../../../../include/FLAC/ordinals.h \
+ u:/usr/include/stdint.h u:/usr/include/sys/stdint.h \
+ u:/usr/include/machine/_stdint.h u:/usr/include/386/_stdint.h \
+ u:/usr/include/machine/_limits.h u:/usr/include/386/_limits.h \
+ ../../../../include/FLAC/format.h ../../../../include/FLAC++/encoder.h \
+ ../../../../include/FLAC/stream_encoder.h \
+ ../../../../include/FLAC/stream_decoder.h \
+ ../../../../include/FLAC++/decoder.h \
+ U:/usr/local1220/include/c++/12.2.0/string \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++config.h \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/os_defines.h \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/cpu_defines.h \
+ U:/usr/local1220/include/c++/12.2.0/pstl/pstl_config.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stringfwd.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/memoryfwd.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/char_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/postypes.h \
+ U:/usr/local1220/include/c++/12.2.0/cwchar u:/usr/include/wchar.h \
+ u:/usr/include/_ctype.h U:/usr/local1220/include/c++/12.2.0/type_traits \
+ U:/usr/local1220/include/c++/12.2.0/cstdint \
+ U:/usr/local1220/include/c++/12.2.0/bits/allocator.h \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++allocator.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/new_allocator.h \
+ U:/usr/local1220/include/c++/12.2.0/new \
+ U:/usr/local1220/include/c++/12.2.0/bits/exception.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/functexcept.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/exception_defines.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/move.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/cpp_type_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/localefwd.h \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++locale.h \
+ U:/usr/local1220/include/c++/12.2.0/clocale u:/usr/include/locale.h \
+ U:/usr/local1220/include/c++/12.2.0/iosfwd \
+ U:/usr/local1220/include/c++/12.2.0/cctype u:/usr/include/ctype.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/ostream_insert.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/cxxabi_forced.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_iterator_base_types.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_iterator_base_funcs.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/concept_check.h \
+ U:/usr/local1220/include/c++/12.2.0/debug/assertions.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_iterator.h \
+ U:/usr/local1220/include/c++/12.2.0/ext/type_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/ptr_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_function.h \
+ U:/usr/local1220/include/c++/12.2.0/backward/binders.h \
+ U:/usr/local1220/include/c++/12.2.0/ext/numeric_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_algobase.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_pair.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/utility.h \
+ U:/usr/local1220/include/c++/12.2.0/debug/debug.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/predefined_ops.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/refwrap.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/invoke.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/range_access.h \
+ U:/usr/local1220/include/c++/12.2.0/initializer_list \
+ U:/usr/local1220/include/c++/12.2.0/bits/basic_string.h \
+ U:/usr/local1220/include/c++/12.2.0/ext/alloc_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/alloc_traits.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/stl_construct.h \
+ U:/usr/local1220/include/c++/12.2.0/string_view \
+ U:/usr/local1220/include/c++/12.2.0/bits/functional_hash.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/hash_bytes.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/string_view.tcc \
+ U:/usr/local1220/include/c++/12.2.0/ext/string_conversions.h \
+ U:/usr/local1220/include/c++/12.2.0/cstdlib \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include-fixed/stdlib.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/std_abs.h \
+ U:/usr/local1220/include/c++/12.2.0/cstdio \
+ U:/usr/local1220/include/c++/12.2.0/cerrno u:/usr/include/errno.h \
+ u:/usr/include/sys/errno.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/charconv.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/basic_string.tcc \
+ ../../../../include/FLAC/stream_decoder.h \
+ ../../../../include/FLAC++/metadata.h ../../../../include/share/compat.h \
+ u:/usr/include/stddef.h u:/usr/include/stdarg.h \
+ u:/usr/include/machine/stdarg.h u:/usr/include/386/stdarg.h \
+ u:/usr/include/unistd.h u:/usr/include/sys/unistd.h \
+ u:/usr/include/inttypes.h u:/usr/include/machine/_inttypes.h \
+ u:/usr/include/386/_inttypes.h u:/usr/include/io.h \
+ u:/usr/include/fcntl.h u:/usr/include/sys/fcntl.h \
+ u:/usr/include/sys/stat.h u:/usr/include/sys/time.h \
+ u:/usr/include/sys/_timeval.h u:/usr/include/sys/timespec.h \
+ u:/usr/include/time.h u:/usr/include/utime.h u:/usr/include/sys/utime.h \
+ U:/usr/local1220/include/c++/12.2.0/cstring
+../../../../config.h:
+u:/usr/include/stdio.h:
+u:/usr/include/sys/cdefs.h:
+u:/usr/include/sys/gnu/cdefs.h:
+u:/usr/include/features.h:
+u:/usr/include/sys/_types.h:
+u:/usr/include/machine/_types.h:
+u:/usr/include/386/_types.h:
+u:/usr/include/stdlib.h:
+u:/usr/include/sys/_null.h:
+u:/usr/include/malloc.h:
+u:/usr/include/string.h:
+u:/usr/include/strings.h:
+../../../../include/FLAC++/metadata.h:
+../../../../include/FLAC++/export.h:
+../../../../include/FLAC/metadata.h:
+u:/usr/include/sys/types.h:
+u:/usr/include/machine/endian.h:
+u:/usr/include/386/endian.h:
+u:/usr/include/sys/select.h:
+u:/usr/include/sys/_sigset.h:
+../../../../include/FLAC/export.h:
+../../../../include/FLAC/callback.h:
+../../../../include/FLAC/ordinals.h:
+u:/usr/include/stdint.h:
+u:/usr/include/sys/stdint.h:
+u:/usr/include/machine/_stdint.h:
+u:/usr/include/386/_stdint.h:
+u:/usr/include/machine/_limits.h:
+u:/usr/include/386/_limits.h:
+../../../../include/FLAC/format.h:
+../../../../include/FLAC++/encoder.h:
+../../../../include/FLAC/stream_encoder.h:
+../../../../include/FLAC/stream_decoder.h:
+../../../../include/FLAC++/decoder.h:
+U:/usr/local1220/include/c++/12.2.0/string:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++config.h:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/os_defines.h:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/cpu_defines.h:
+U:/usr/local1220/include/c++/12.2.0/pstl/pstl_config.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stringfwd.h:
+U:/usr/local1220/include/c++/12.2.0/bits/memoryfwd.h:
+U:/usr/local1220/include/c++/12.2.0/bits/char_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/postypes.h:
+U:/usr/local1220/include/c++/12.2.0/cwchar:
+u:/usr/include/wchar.h:
+u:/usr/include/_ctype.h:
+U:/usr/local1220/include/c++/12.2.0/type_traits:
+U:/usr/local1220/include/c++/12.2.0/cstdint:
+U:/usr/local1220/include/c++/12.2.0/bits/allocator.h:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++allocator.h:
+U:/usr/local1220/include/c++/12.2.0/bits/new_allocator.h:
+U:/usr/local1220/include/c++/12.2.0/new:
+U:/usr/local1220/include/c++/12.2.0/bits/exception.h:
+U:/usr/local1220/include/c++/12.2.0/bits/functexcept.h:
+U:/usr/local1220/include/c++/12.2.0/bits/exception_defines.h:
+U:/usr/local1220/include/c++/12.2.0/bits/move.h:
+U:/usr/local1220/include/c++/12.2.0/bits/cpp_type_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/localefwd.h:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++locale.h:
+U:/usr/local1220/include/c++/12.2.0/clocale:
+u:/usr/include/locale.h:
+U:/usr/local1220/include/c++/12.2.0/iosfwd:
+U:/usr/local1220/include/c++/12.2.0/cctype:
+u:/usr/include/ctype.h:
+U:/usr/local1220/include/c++/12.2.0/bits/ostream_insert.h:
+U:/usr/local1220/include/c++/12.2.0/bits/cxxabi_forced.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_iterator_base_types.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_iterator_base_funcs.h:
+U:/usr/local1220/include/c++/12.2.0/bits/concept_check.h:
+U:/usr/local1220/include/c++/12.2.0/debug/assertions.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_iterator.h:
+U:/usr/local1220/include/c++/12.2.0/ext/type_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/ptr_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_function.h:
+U:/usr/local1220/include/c++/12.2.0/backward/binders.h:
+U:/usr/local1220/include/c++/12.2.0/ext/numeric_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_algobase.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_pair.h:
+U:/usr/local1220/include/c++/12.2.0/bits/utility.h:
+U:/usr/local1220/include/c++/12.2.0/debug/debug.h:
+U:/usr/local1220/include/c++/12.2.0/bits/predefined_ops.h:
+U:/usr/local1220/include/c++/12.2.0/bits/refwrap.h:
+U:/usr/local1220/include/c++/12.2.0/bits/invoke.h:
+U:/usr/local1220/include/c++/12.2.0/bits/range_access.h:
+U:/usr/local1220/include/c++/12.2.0/initializer_list:
+U:/usr/local1220/include/c++/12.2.0/bits/basic_string.h:
+U:/usr/local1220/include/c++/12.2.0/ext/alloc_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/alloc_traits.h:
+U:/usr/local1220/include/c++/12.2.0/bits/stl_construct.h:
+U:/usr/local1220/include/c++/12.2.0/string_view:
+U:/usr/local1220/include/c++/12.2.0/bits/functional_hash.h:
+U:/usr/local1220/include/c++/12.2.0/bits/hash_bytes.h:
+U:/usr/local1220/include/c++/12.2.0/bits/string_view.tcc:
+U:/usr/local1220/include/c++/12.2.0/ext/string_conversions.h:
+U:/usr/local1220/include/c++/12.2.0/cstdlib:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include-fixed/stdlib.h:
+U:/usr/local1220/include/c++/12.2.0/bits/std_abs.h:
+U:/usr/local1220/include/c++/12.2.0/cstdio:
+U:/usr/local1220/include/c++/12.2.0/cerrno:
+u:/usr/include/errno.h:
+u:/usr/include/sys/errno.h:
+U:/usr/local1220/include/c++/12.2.0/bits/charconv.h:
+U:/usr/local1220/include/c++/12.2.0/bits/basic_string.tcc:
+../../../../include/FLAC/stream_decoder.h:
+../../../../include/FLAC++/metadata.h:
+../../../../include/share/compat.h:
+u:/usr/include/stddef.h:
+u:/usr/include/stdarg.h:
+u:/usr/include/machine/stdarg.h:
+u:/usr/include/386/stdarg.h:
+u:/usr/include/unistd.h:
+u:/usr/include/sys/unistd.h:
+u:/usr/include/inttypes.h:
+u:/usr/include/machine/_inttypes.h:
+u:/usr/include/386/_inttypes.h:
+u:/usr/include/io.h:
+u:/usr/include/fcntl.h:
+u:/usr/include/sys/fcntl.h:
+u:/usr/include/sys/stat.h:
+u:/usr/include/sys/time.h:
+u:/usr/include/sys/_timeval.h:
+u:/usr/include/sys/timespec.h:
+u:/usr/include/time.h:
+u:/usr/include/utime.h:
+u:/usr/include/sys/utime.h:
+U:/usr/local1220/include/c++/12.2.0/cstring:

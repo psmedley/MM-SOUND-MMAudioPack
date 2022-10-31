@@ -1,0 +1,210 @@
+lpc_intrin_avx2.lo: lpc_intrin_avx2.c ../../config.h \
+ include/private/cpu.h ../../include/FLAC/ordinals.h \
+ U:/USR/include/stdint.h U:/USR/include/sys/stdint.h \
+ U:/USR/include/sys/cdefs.h U:/USR/include/sys/gnu/cdefs.h \
+ U:/USR/include/features.h U:/USR/include/sys/_types.h \
+ U:/USR/include/machine/_types.h U:/USR/include/386/_types.h \
+ U:/USR/include/machine/_stdint.h U:/USR/include/386/_stdint.h \
+ U:/USR/include/machine/_limits.h U:/USR/include/386/_limits.h \
+ include/private/lpc.h include/private/float.h \
+ ../../include/FLAC/format.h ../../include/FLAC/export.h \
+ ../../include/FLAC/ordinals.h ../../include/FLAC/assert.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/immintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/x86gprintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/ia32intrin.h \
+ U:/USR/include/stddef.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/adxintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/bmiintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/bmi2intrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/cetintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/cldemoteintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/clflushoptintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/clwbintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/clzerointrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/enqcmdintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/fxsrintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/lzcntintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/lwpintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/movdirintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mwaitintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mwaitxintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/pconfigintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/popcntintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/pkuintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/rdseedintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/rtmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/serializeintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/sgxintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/tbmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/tsxldtrkintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/uintrintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/waitpkgintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/wbnoinvdintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsaveintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsavecintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsaveoptintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsavesintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xtestintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/hresetintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xmmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mm_malloc.h \
+ U:/USR/include/stdlib.h U:/USR/include/sys/_null.h \
+ U:/USR/include/malloc.h U:/USR/include/errno.h \
+ U:/USR/include/sys/errno.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/emmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/pmmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/tmmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/smmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/wmmintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avxintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avxvnniintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx2intrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512fintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512erintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512pfintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512cdintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bwintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512dqintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vlbwintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vldqintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512ifmaintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512ifmavlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmiintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmivlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx5124fmapsintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx5124vnniwintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vpopcntdqintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmi2intrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmi2vlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vnniintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vnnivlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vpopcntdqvlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bitalgintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vp2intersectintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vp2intersectvlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/shaintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/fmaintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/f16cintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/gfniintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/vaesintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/vpclmulqdqintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bf16vlintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bf16intrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/amxtileintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/amxint8intrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/amxbf16intrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/prfchwintrin.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/keylockerintrin.h
+../../config.h:
+include/private/cpu.h:
+../../include/FLAC/ordinals.h:
+U:/USR/include/stdint.h:
+U:/USR/include/sys/stdint.h:
+U:/USR/include/sys/cdefs.h:
+U:/USR/include/sys/gnu/cdefs.h:
+U:/USR/include/features.h:
+U:/USR/include/sys/_types.h:
+U:/USR/include/machine/_types.h:
+U:/USR/include/386/_types.h:
+U:/USR/include/machine/_stdint.h:
+U:/USR/include/386/_stdint.h:
+U:/USR/include/machine/_limits.h:
+U:/USR/include/386/_limits.h:
+include/private/lpc.h:
+include/private/float.h:
+../../include/FLAC/format.h:
+../../include/FLAC/export.h:
+../../include/FLAC/ordinals.h:
+../../include/FLAC/assert.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/immintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/x86gprintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/ia32intrin.h:
+U:/USR/include/stddef.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/adxintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/bmiintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/bmi2intrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/cetintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/cldemoteintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/clflushoptintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/clwbintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/clzerointrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/enqcmdintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/fxsrintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/lzcntintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/lwpintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/movdirintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mwaitintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mwaitxintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/pconfigintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/popcntintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/pkuintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/rdseedintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/rtmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/serializeintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/sgxintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/tbmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/tsxldtrkintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/uintrintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/waitpkgintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/wbnoinvdintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsaveintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsavecintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsaveoptintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xsavesintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xtestintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/hresetintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/xmmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/mm_malloc.h:
+U:/USR/include/stdlib.h:
+U:/USR/include/sys/_null.h:
+U:/USR/include/malloc.h:
+U:/USR/include/errno.h:
+U:/USR/include/sys/errno.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/emmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/pmmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/tmmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/smmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/wmmintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avxintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avxvnniintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx2intrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512fintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512erintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512pfintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512cdintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bwintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512dqintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vlbwintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vldqintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512ifmaintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512ifmavlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmiintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmivlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx5124fmapsintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx5124vnniwintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vpopcntdqintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmi2intrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vbmi2vlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vnniintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vnnivlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vpopcntdqvlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bitalgintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vp2intersectintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512vp2intersectvlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/shaintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/fmaintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/f16cintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/gfniintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/vaesintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/vpclmulqdqintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bf16vlintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/avx512bf16intrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/amxtileintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/amxint8intrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/amxbf16intrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/prfchwintrin.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include/keylockerintrin.h:

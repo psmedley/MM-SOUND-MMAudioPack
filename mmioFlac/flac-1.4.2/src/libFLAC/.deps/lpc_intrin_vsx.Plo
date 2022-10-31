@@ -1,0 +1,2 @@
+lpc_intrin_vsx.lo: lpc_intrin_vsx.c ../../config.h
+../../config.h:

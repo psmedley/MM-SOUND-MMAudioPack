@@ -1,0 +1,98 @@
+metadata.lo: metadata.cpp ../../config.h ../../include/share/alloc.h \
+ u:/usr/include/limits.h u:/usr/include/sys/cdefs.h \
+ u:/usr/include/sys/gnu/cdefs.h u:/usr/include/features.h \
+ u:/usr/include/sys/limits.h u:/usr/include/machine/_limits.h \
+ u:/usr/include/386/_limits.h u:/usr/include/sys/syslimits.h \
+ u:/usr/include/stdint.h u:/usr/include/sys/stdint.h \
+ u:/usr/include/sys/_types.h u:/usr/include/machine/_types.h \
+ u:/usr/include/386/_types.h u:/usr/include/machine/_stdint.h \
+ u:/usr/include/386/_stdint.h u:/usr/include/stdlib.h \
+ u:/usr/include/sys/_null.h u:/usr/include/malloc.h \
+ ../../include/share/compat.h u:/usr/include/stddef.h \
+ u:/usr/include/stdarg.h u:/usr/include/machine/stdarg.h \
+ u:/usr/include/386/stdarg.h u:/usr/include/unistd.h \
+ u:/usr/include/sys/types.h u:/usr/include/machine/endian.h \
+ u:/usr/include/386/endian.h u:/usr/include/sys/select.h \
+ u:/usr/include/sys/_sigset.h u:/usr/include/sys/unistd.h \
+ u:/usr/include/inttypes.h u:/usr/include/machine/_inttypes.h \
+ u:/usr/include/386/_inttypes.h u:/usr/include/io.h \
+ u:/usr/include/fcntl.h u:/usr/include/sys/fcntl.h \
+ u:/usr/include/sys/stat.h u:/usr/include/sys/time.h \
+ u:/usr/include/sys/_timeval.h u:/usr/include/sys/timespec.h \
+ u:/usr/include/time.h u:/usr/include/utime.h u:/usr/include/sys/utime.h \
+ ../../include/FLAC++/metadata.h ../../include/FLAC++/export.h \
+ ../../include/FLAC/metadata.h ../../include/FLAC/export.h \
+ ../../include/FLAC/callback.h ../../include/FLAC/ordinals.h \
+ ../../include/FLAC/format.h ../../include/FLAC/assert.h \
+ U:/usr/local1220/include/c++/12.2.0/cstdlib \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++config.h \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/os_defines.h \
+ U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/cpu_defines.h \
+ U:/usr/local1220/include/c++/12.2.0/pstl/pstl_config.h \
+ U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include-fixed/stdlib.h \
+ U:/usr/local1220/include/c++/12.2.0/bits/std_abs.h \
+ U:/usr/local1220/include/c++/12.2.0/cstring u:/usr/include/string.h \
+ u:/usr/include/strings.h
+../../config.h:
+../../include/share/alloc.h:
+u:/usr/include/limits.h:
+u:/usr/include/sys/cdefs.h:
+u:/usr/include/sys/gnu/cdefs.h:
+u:/usr/include/features.h:
+u:/usr/include/sys/limits.h:
+u:/usr/include/machine/_limits.h:
+u:/usr/include/386/_limits.h:
+u:/usr/include/sys/syslimits.h:
+u:/usr/include/stdint.h:
+u:/usr/include/sys/stdint.h:
+u:/usr/include/sys/_types.h:
+u:/usr/include/machine/_types.h:
+u:/usr/include/386/_types.h:
+u:/usr/include/machine/_stdint.h:
+u:/usr/include/386/_stdint.h:
+u:/usr/include/stdlib.h:
+u:/usr/include/sys/_null.h:
+u:/usr/include/malloc.h:
+../../include/share/compat.h:
+u:/usr/include/stddef.h:
+u:/usr/include/stdarg.h:
+u:/usr/include/machine/stdarg.h:
+u:/usr/include/386/stdarg.h:
+u:/usr/include/unistd.h:
+u:/usr/include/sys/types.h:
+u:/usr/include/machine/endian.h:
+u:/usr/include/386/endian.h:
+u:/usr/include/sys/select.h:
+u:/usr/include/sys/_sigset.h:
+u:/usr/include/sys/unistd.h:
+u:/usr/include/inttypes.h:
+u:/usr/include/machine/_inttypes.h:
+u:/usr/include/386/_inttypes.h:
+u:/usr/include/io.h:
+u:/usr/include/fcntl.h:
+u:/usr/include/sys/fcntl.h:
+u:/usr/include/sys/stat.h:
+u:/usr/include/sys/time.h:
+u:/usr/include/sys/_timeval.h:
+u:/usr/include/sys/timespec.h:
+u:/usr/include/time.h:
+u:/usr/include/utime.h:
+u:/usr/include/sys/utime.h:
+../../include/FLAC++/metadata.h:
+../../include/FLAC++/export.h:
+../../include/FLAC/metadata.h:
+../../include/FLAC/export.h:
+../../include/FLAC/callback.h:
+../../include/FLAC/ordinals.h:
+../../include/FLAC/format.h:
+../../include/FLAC/assert.h:
+U:/usr/local1220/include/c++/12.2.0/cstdlib:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/c++config.h:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/os_defines.h:
+U:/usr/local1220/include/c++/12.2.0/i686-pc-os2-emx/bits/cpu_defines.h:
+U:/usr/local1220/include/c++/12.2.0/pstl/pstl_config.h:
+U:/usr/local1220/lib/gcc/i686-pc-os2-emx/12.2.0/include-fixed/stdlib.h:
+U:/usr/local1220/include/c++/12.2.0/bits/std_abs.h:
+U:/usr/local1220/include/c++/12.2.0/cstring:
+u:/usr/include/string.h:
+u:/usr/include/strings.h:
